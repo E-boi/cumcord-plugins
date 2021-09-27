@@ -1,0 +1,7 @@
+{
+  "name": "link channels",
+  "description": "Adds an Icon to channels that copys <#channelId>. (channelId is replaced)",
+  "author": "ugly-patootie#0611",
+  "file": "index.js",
+  "license": "MIT"
+}
