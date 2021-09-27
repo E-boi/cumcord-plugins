@@ -1,0 +1,7 @@
+{
+	"name": "nsfw tags",
+	"description": "Adds a more visible tags for nsfw channels",
+	"author": "ugly-patootie#0611",
+	"file": "index.js",
+	"license": "MIT"
+}
