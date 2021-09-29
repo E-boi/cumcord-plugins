@@ -1,0 +1,7 @@
+{
+  "name": "custom rpc",
+  "description": "Add your own rpc within discord",
+  "author": "ugly-patootie#0611",
+  "file": "index.js",
+  "license": "MIT"
+}
