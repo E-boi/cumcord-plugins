@@ -1,0 +1,11 @@
+.cumstyles-textinput {
+	display: flex;
+}
+
+.cumstyles-textinput > div {
+	flex: auto;
+}
+
+.cumstyles-textinput button {
+	margin-left: 10px;
+}
