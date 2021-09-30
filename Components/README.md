@@ -21,3 +21,11 @@ Each folder works independently (you can just rip them without worrying about an
 ## [Category](https://github.com/E-boi/cumcord-plugins/tree/master/Components/Category)
 
 ![tits](https://cdn.discordapp.com/attachments/770304534203334678/892900668954804285/unknown.png)
+
+## [ColorPicker](https://github.com/E-boi/cumcord-plugins/tree/master/Components/ColorPicker)
+
+![f](https://cdn.discordapp.com/attachments/770304534203334678/892923351708876840/unknown.png)
+
+## [RadioGroup](https://github.com/E-boi/cumcord-plugins/tree/master/Components/RadioGroup)
+
+![r](https://cdn.discordapp.com/attachments/770304534203334678/892923351708876840/unknown.png)
