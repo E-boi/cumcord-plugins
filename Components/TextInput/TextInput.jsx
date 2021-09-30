@@ -1,5 +1,5 @@
 import { webpack } from '@cumcord/modules';
-import { Divider } from '../components';
+import Divider from './Divider';
 
 const Input = webpack.findByDisplayName('TextInput');
 const FormItem = webpack.findByDisplayName('FormItem');

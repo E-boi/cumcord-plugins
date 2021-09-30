@@ -32,4 +32,4 @@ expanded:
 
 ## [RadioGroup](https://github.com/E-boi/cumcord-plugins/tree/master/Components/RadioGroup)
 
-![r](https://cdn.discordapp.com/attachments/770304534203334678/892923351708876840/unknown.png)
+![r](https://media.discordapp.net/attachments/770304534203334678/892923282729336862/unknown.png)
