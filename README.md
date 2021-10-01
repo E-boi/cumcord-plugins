@@ -19,3 +19,13 @@ Plugin link (how you add the plugin to cumcord): https://e-boi.github.io/cumcord
 Make your own rpc within discord
 
 Plugin link (how you add the plugin to cumcord): https://e-boi.github.io/cumcord-plugins/customrpc/dist
+
+## [Among us](https://github.com/E-boi/cumcord-plugins/tree/master/amongus)
+
+Listen to sussy music while browsing discord
+
+## [Show connections](https://github.com/E-boi/cumcord-plugins/tree/master/showconnections)
+
+Show connections in popouts
+
+![lel](https://cdn.discordapp.com/attachments/862064791144103950/893307027537952860/unknown.png)
