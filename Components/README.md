@@ -21,9 +21,11 @@ Each folder works independently (you can just rip them without worrying about an
 ## [Category](https://github.com/E-boi/cumcord-plugins/tree/master/Components/Category)
 
 collapsed:
+
 ![tits](https://cdn.discordapp.com/attachments/770304534203334678/892900668954804285/unknown.png)
 
 expanded:
+
 ![ccc](https://cdn.discordapp.com/attachments/770304534203334678/892927902612598804/unknown.png)
 
 ## [ColorPicker](https://github.com/E-boi/cumcord-plugins/tree/master/Components/ColorPicker)
