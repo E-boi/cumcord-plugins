@@ -24,8 +24,12 @@ Plugin link (how you add the plugin to cumcord): https://e-boi.github.io/cumcord
 
 Listen to sussy music while browsing discord
 
+Plugin link (how you add the plugin to cumcord): https://e-boi.github.io/cumcord-plugins/amongus/dist
+
 ## [Show connections](https://github.com/E-boi/cumcord-plugins/tree/master/showconnections)
 
 Show connections in popouts
+
+Plugin link (how you add the plugin to cumcord): https://e-boi.github.io/cumcord-plugins/showconnections/dist
 
 ![lel](https://cdn.discordapp.com/attachments/862064791144103950/893307027537952860/unknown.png)
