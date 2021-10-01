@@ -1,0 +1,7 @@
+{
+  "name": "show connections",
+  "description": "show connections in user popout",
+  "author": "ugly-patootie#0611",
+  "file": "index.js",
+  "license": "MIT"
+}

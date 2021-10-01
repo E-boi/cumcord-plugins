@@ -1,0 +1,15 @@
+.sc-connectAccounts {
+	display: flex;
+	overflow-x: auto;
+	margin-bottom: 11px;
+}
+
+.sc-connection {
+	display: flex;
+}
+
+.sc-connection a {
+	display: flex;
+	height: 30px;
+	width: 34px;
+}
