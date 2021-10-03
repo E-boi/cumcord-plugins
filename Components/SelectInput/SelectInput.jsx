@@ -1,20 +1,14 @@
 import { webpack } from '@cumcord/modules';
-import Divider from './Divider';
+import FormItem from './FormItem';
 
-const FormItem = webpack.findByDisplayName('FormItem'),
-	SelectTempWrapper = webpack.findByDisplayName('SelectTempWrapper');
-
-const classes = {
-	...webpack.findByProps('marginBottom20'),
-};
+const SelectTempWrapper = webpack.findByDisplayName('SelectTempWrapper');
 
 export default props => {
 	const title = props.children;
 	delete props.children;
 	return (
-		<FormItem title={title} className={classes.marginBottom20} required={props.required}>
+		<FormItem title={title} note={props.note} required={props.required}>
 			<SelectTempWrapper {...props} />
-			<Divider className={[classes.marginTop20, classes.marginBottom20].join(' ')} />
 		</FormItem>
 	);
 };
