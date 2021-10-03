@@ -3,7 +3,7 @@ import { webpack } from '@cumcord/modules';
 const parser = webpack.findByProps('parse', 'parseTopic');
 const classes = {
 	markup: cumcord.modules.webpack.findByProps('markup').markup,
-	scrollbarGhostHairline: cumcord.modules.webpack.findByProps('scrollbarGhostHairline'),
+	scrollbarGhostHairline: cumcord.modules.webpack.findByProps('scrollbarGhostHairline').scrollbarGhostHairline,
 };
 
 export default ({ file, path }) => {
