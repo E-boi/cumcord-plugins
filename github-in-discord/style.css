@@ -1,6 +1,16 @@
 .infile {
 	height: 700px !important;
-	width: 800px !important;
+	width: 80% !important;
+	margin: auto;
+}
+
+.infile .markup-2BOw-j pre {
+	max-width: 100%;
+}
+
+.infile .markup-2BOw-j {
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .infile .content-1LAB8Z {
