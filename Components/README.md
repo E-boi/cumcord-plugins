@@ -35,3 +35,11 @@ expanded:
 ## [RadioGroup](https://github.com/E-boi/cumcord-plugins/tree/master/Components/RadioGroup)
 
 ![r](https://media.discordapp.net/attachments/770304534203334678/892923282729336862/unknown.png)
+
+## [CheckBox](https://github.com/E-boi/cumcord-plugins/tree/master/Components/CheckBox)
+
+![s](https://cdn.discordapp.com/attachments/824921608560181261/894050274891673600/unknown.png)
+
+## [CalendarPicker](https://github.com/E-boi/cumcord-plugins/tree/master/Components/CalendarPicker)
+
+![penissexlol](https://cdn.discordapp.com/attachments/770304534203334678/894261912773201990/unknown.png)
