@@ -18,8 +18,7 @@ export default ({ persist }) => {
 	return {
 		onLoad() {
 			cssInject = css();
-			injection = after('renderLoggedIn', HeaderBarContainer.prototype, (args, res) => {
-				console.log(args, res);
+			injection = after('renderLoggedIn', HeaderBarContainer.prototype, (_, res) => {
 				const SwitchButton = React.createElement(
 					Tooltip,
 					{ text: 'Switch Accounts', position: 'bottom' },
