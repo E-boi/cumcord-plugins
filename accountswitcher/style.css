@@ -1,0 +1,165 @@
+.acc-switch-modal {
+  width: 650px;
+}
+
+.acc-switch-modal .separator-2-RRj_ {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.acc-switch-modal .content-1LAB8Z {
+  background-color: var(--background-tertiary);
+  padding: 10px 4px 0 10px !important;
+  margin-bottom: 20px !important;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.acc-switch-modal .content-1LAB8Z [aria-hidden='true'] {
+  display: none;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to {
+  background-color: transparent;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account {
+  background-color: var(--background-secondary);
+  -webkit-transition: background-color 250ms ease;
+  transition: background-color 250ms ease;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .accountName {
+  color: var(--text-normal);
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+  font-size: large;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .accountName [aria-label='Edit'] {
+  position: relative;
+  margin-left: 5px;
+  top: 1px;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .Token {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .Token .tokenValue {
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+      -ms-user-select: none !important;
+          user-select: none !important;
+  background-color: var(--background-secondary-alt);
+  color: var(--background-secondary-alt);
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-left: 5px;
+  padding: 3px;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .Token .tokenValue.reveal {
+  background-color: transparent;
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-buttons {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  right: 0px;
+  top: 5px;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-buttons button {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 5px;
+  height: 30px;
+  padding: 0;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-buttons button:hover {
+  background-color: #b13234;
+}
+
+.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account img {
+  margin-right: 13px;
+  border-radius: 5%;
+  height: 60px;
+}
+
+.acc-switch-modal .content-1LAB8Z .selected-account {
+  background-color: var(--background-accent) !important;
+}
+
+.acc-switch-modal .footer-2gL1pp .lookFilled-1Gx00P.colorBrand-3pXr91:nth-child(2) {
+  position: absolute;
+  left: 15px;
+}
+
+.acc-switch-modal .footer-2gL1pp .lookFilled-1Gx00P.colorGrey-2DXtkV {
+  cursor: not-allowed;
+}
+
+.switch-acc-button polygon {
+  fill: var(--interactive-normal);
+}
+/*# sourceMappingURL=style.css.map */
