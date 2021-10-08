@@ -1,0 +1,315 @@
+.ccbf-friend {
+	margin: 6px;
+	width: 32px;
+	height: 32px;
+	float: left;
+	border-radius: 360px;
+}
+
+.ccbf-favoritefriend > .layout-2DM8Md > .children-gzQq2t {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+}
+
+.ccbf-favoritefriend > .layout-2DM8Md > .children-gzQq2t [aria-label='User Information'] {
+	margin: 0px 5px;
+}
+
+.ccbf-friend-name {
+	color: white;
+	float: left;
+	font-family: 'Whitney', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	font-weight: 700;
+	margin-left: 8px;
+	font-size: 20px;
+}
+
+.ccbf-friend-discrim {
+	color: rgba(255, 255, 255, 0.6);
+	float: left;
+	font-family: 'Whitney', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	font-size: 16px;
+	position: relative;
+	top: 4px;
+	padding-right: 6px;
+}
+
+.ccbf-friend-discrim.ccbf-friend-discrim::before {
+	content: '#';
+}
+
+.ccbf-friend-name,
+.ccbf-friend-discrim {
+	margin-top: 8px;
+}
+
+.ccbf-star {
+	display: inline;
+	position: relative;
+	top: 6px;
+	margin-left: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	background: url('https://cdn.discordapp.com/attachments/770304534203334678/891085095459512340/e4d52f4d69d7bba67e5fd70ffe26b70d.png') no-repeat;
+	background-size: 10px 10px;
+}
+
+.ccbf-star-member {
+	margin-left: 4px;
+}
+
+.ccbf-badge,
+.ccbf-badge.topSectionNormal-2-vo2m {
+	background: none;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
+
+.ccbf-badge ~ .botTagRegular-2HEhHi {
+	margin-left: 8px;
+}
+
+.privateChannels-1nO12o .ccbf-badge,
+.badges > .ccbf-badge {
+	height: 20px !important;
+	width: auto !important;
+}
+
+.ccbf-information {
+	left: 82%;
+	display: none;
+	opacity: 0.4;
+}
+
+.ccbf-fav-friends-header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+.ccbf-expand-fav-friends {
+	margin-left: auto;
+	cursor: pointer;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.ccbf-expand-fav-friends.expanded {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.ccbf-information:hover {
+	opacity: 0.9;
+}
+
+.channel-2QD9_O:hover .ccbf-information {
+	display: block;
+}
+
+.ccbf-user-settings {
+	width: auto !important;
+	margin-bottom: 32px;
+	border-radius: 5px;
+	padding: 10px 10px 0;
+}
+
+.ccbf-friend-item {
+	padding: 6px;
+	padding-left: 18px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	height: auto;
+}
+
+.ccbf-notification-sounds {
+	width: auto !important;
+	padding-bottom: 64px;
+}
+
+.ccbf-notification-sounds-icon {
+	background: url('https://canary.discordapp.com/assets/f9b93aa0d9985bd2b678da58ed0d75d2.svg') 50% no-repeat !important;
+	width: auto;
+	height: auto;
+}
+
+.ccbf-notification-sounds > div > div > div > .divider-3573oO.marginTop20-3TxNs6 {
+	display: none;
+}
+
+.searchBar-2_Yu-C {
+	width: 100%;
+}
+
+html body .ccbf-ff-header {
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
+	display: flex !important;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+html body .ccbf-ff-header svg {
+	margin-right: 5px;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+	width: 18px;
+	height: 18px;
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+}
+
+html body .ccbf-ff-header.opened svg {
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.ccbf-status-userinline {
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.ccbf-status-popup {
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
+	height: fit-content;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+	background-color: #212121;
+}
+
+.ccbf-status-popup .header {
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	padding: 0;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
+.ccbf-status-popup .header > span {
+	display: none;
+}
+
+.ccbf-status-popup .contents {
+	padding: 0;
+}
+
+.ccbf-status-popup .contents .inner {
+	background-color: transparent;
+	border: none;
+	padding-bottom: 0;
+	margin-bottom: 2px;
+}
+
+.ccbf-status-popup-text {
+	color: #fff;
+	font-weight: 600;
+	margin-right: 8px;
+}
+
+.pc-scroller {
+	max-height: 300px;
+}
+
+.ccbf-container {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: 600;
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	color: var(--channels-default);
+}
+
+.ccbf-mutualGuilds {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	-ms-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	position: inherit;
+}
+
+.ccbf-mutualGuilds .icon-3o6xvg {
+	border-radius: 12px;
+}
+
+.ccbf-mutualGuilds > div {
+	margin-right: -5px;
+}
+
+.ccbf-header {
+	border-left: 2px solid var(--background-modifier-accent);
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.headerCellContent-1pLtOr {
+	margin: auto;
+}
+
+.ccbf-nameCell {
+	width: -webkit-min-content;
+	width: -moz-min-content;
+	width: min-content;
+	padding: 0px 30px;
+}
+
+@media screen and (max-width: 975px) {
+	.ccbf-nameCell {
+		padding: 0px 10px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.ccbf-nameCell {
+		padding: 0px 10px;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.ccbf-nameCell {
+		padding: 0px 30px;
+	}
+}
+
+@media screen and (min-width: 1500px) {
+	.ccbf-nameCell {
+		padding: 0px 40px;
+	}
+}
+/*# sourceMappingURL=style.css.map */
