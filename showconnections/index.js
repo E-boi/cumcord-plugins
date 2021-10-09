@@ -13,6 +13,7 @@ export default () => {
 		onLoad() {
 			cssInject = css();
 			injection = after('default', Popout, ([{ user }], res) => {
+				if (!res) return res;
 				res.props.children.splice(2, 0, React.createElement(Connections, { user: user.id }));
 				return res;
 			});
