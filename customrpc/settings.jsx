@@ -2,7 +2,7 @@ import { webpack } from '@cumcord/modules';
 import { useNest } from '@cumcord/utils';
 import TextInput from './components/TextInput';
 import Category from './components/Category';
-import { SwitchItem, Text, UserPopout } from './components';
+import { Button, SwitchItem, Text, UserPopout } from './components';
 import SelectInput from './components/SelectInput';
 
 const { getCurrentUser } = webpack.findByProps('getCurrentUser');
@@ -45,10 +45,10 @@ export default ({ persist, reloadRPC }) => {
 					getImages(persist.ghost[val.value].client_id)
 						.then(assets => setAssets(assets))
 						.catch(() => {});
-					reloadRPC(persist.ghost);
 				}}
 			>
 				Rpc Config
+				<Button onClick={() => reloadRPC(persist.ghost)}>Save</Button>
 			</SelectInput>
 
 			<SwitchItem
@@ -61,13 +61,7 @@ export default ({ persist, reloadRPC }) => {
 				Disabled
 			</SwitchItem>
 
-			<SwitchItem
-				value={rpc.show_time ?? true}
-				onChange={() => {
-					persist.store[selected].show_time = !rpc.show_time;
-					reloadRPC(persist.ghost);
-				}}
-			>
+			<SwitchItem value={rpc.show_time ?? true} onChange={() => (persist.store[selected].show_time = !rpc.show_time)}>
 				Show Time
 			</SwitchItem>
 
@@ -79,39 +73,20 @@ export default ({ persist, reloadRPC }) => {
 					getImages(persist.ghost[selected].client_id)
 						.then(assets => setAssets(assets))
 						.catch(() => {});
-					reloadRPC(persist.ghost);
 				}}
 			>
 				Client ID
 			</TextInput>
 
-			<TextInput
-				value={rpc.name}
-				onChange={val => {
-					persist.store[selected].name = val;
-					reloadRPC(persist.ghost);
-				}}
-			>
+			<TextInput value={rpc.name} onChange={val => (persist.store[selected].name = val)}>
 				Name
 			</TextInput>
 
-			<TextInput
-				value={rpc.details}
-				onChange={val => {
-					persist.store[selected].details = val;
-					reloadRPC(persist.ghost);
-				}}
-			>
+			<TextInput value={rpc.details} onChange={val => (persist.store[selected].details = val)}>
 				Details
 			</TextInput>
 
-			<TextInput
-				value={rpc.state}
-				onChange={val => {
-					persist.store[selected].state = val;
-					reloadRPC(persist.ghost);
-				}}
-			>
+			<TextInput value={rpc.state} onChange={val => (persist.store[selected].state = val)}>
 				State
 			</TextInput>
 
@@ -127,10 +102,7 @@ export default ({ persist, reloadRPC }) => {
 					<SelectInput
 						value={rpc.large_image}
 						options={assets.map(asset => ({ label: asset.name, value: asset.name }))}
-						onChange={val => {
-							persist.store[selected].large_image = val.value;
-							reloadRPC(persist.ghost);
-						}}
+						onChange={val => (persist.store[selected].large_image = val.value)}
 					>
 						Large Image
 					</SelectInput>
@@ -139,32 +111,17 @@ export default ({ persist, reloadRPC }) => {
 					<SelectInput
 						value={rpc.small_image ?? ''}
 						options={assets.map(asset => ({ label: asset.name, value: asset.name }))}
-						onChange={val => {
-							persist.store[selected].small_image = val.value;
-							reloadRPC(persist.ghost);
-						}}
+						onChange={val => (persist.store[selected].small_image = val.value)}
 					>
 						Small Image
 					</SelectInput>
 				)}
 
-				<TextInput
-					value={rpc.large_text}
-					onChange={val => {
-						persist.store[selected].large_text = val;
-						reloadRPC(persist.ghost);
-					}}
-				>
+				<TextInput value={rpc.large_text} onChange={val => (persist.store[selected].large_text = val)}>
 					Large Image Tooltip
 				</TextInput>
 
-				<TextInput
-					value={rpc.small_text}
-					onChange={val => {
-						persist.store[selected].small_text = val;
-						reloadRPC(persist.ghost);
-					}}
-				>
+				<TextInput value={rpc.small_text} onChange={val => (persist.store[selected].small_text = val)}>
 					Small Image Tooltip
 				</TextInput>
 			</Category>
@@ -177,43 +134,19 @@ export default ({ persist, reloadRPC }) => {
 					changeOpened1(false);
 				}}
 			>
-				<TextInput
-					value={rpc.button1?.label ?? ''}
-					onChange={val => {
-						persist.store[selected].button1.label = val;
-						reloadRPC(persist.ghost);
-					}}
-				>
+				<TextInput value={rpc.button1?.label ?? ''} onChange={val => (persist.store[selected].button1.label = val)}>
 					Button 1 Text
 				</TextInput>
 
-				<TextInput
-					value={rpc.button1?.url ?? ''}
-					onChange={val => {
-						persist.store[selected].button1.url = val;
-						reloadRPC(persist.ghost);
-					}}
-				>
+				<TextInput value={rpc.button1?.url ?? ''} onChange={val => (persist.store[selected].button1.url = val)}>
 					Button 1 Url
 				</TextInput>
 
-				<TextInput
-					value={rpc.button2?.label ?? ''}
-					onChange={val => {
-						persist.store[selected].button2.label = val;
-						reloadRPC(persist.ghost);
-					}}
-				>
+				<TextInput value={rpc.button2?.label ?? ''} onChange={val => (persist.store[selected].button2.label = val)}>
 					Button 2 Text
 				</TextInput>
 
-				<TextInput
-					value={rpc.button2?.url ?? ''}
-					onChange={val => {
-						persist.store[selected].button2.url = val;
-						reloadRPC(persist.ghost);
-					}}
-				>
+				<TextInput value={rpc.button2?.url ?? ''} onChange={val => (persist.store[selected].button2.url = val)}>
 					Button 2 Url
 				</TextInput>
 			</Category>

@@ -1,10 +1,12 @@
 import { webpack } from '@cumcord/modules';
 import { React } from '@cumcord/modules/common';
 import Settings from './settings';
+import css from './style.css';
 const {
 	SET_ACTIVITY: { handler: SET_RPC },
 } = webpack.findByProps('INVITE_BROWSER');
 
+let cssInject;
 const defaults = {
 	rpc1: {
 		show_time: true,
@@ -92,9 +94,11 @@ export default ({ persist }) => {
 	if (!persist.ghost['rpc1']) setDefault(persist.store);
 	return {
 		onLoad() {
+			cssInject = css();
 			SET_RPC(rpc(persist.ghost));
 		},
 		onUnload() {
+			cssInject?.();
 			SET_RPC(rpc(persist.ghost, true));
 		},
 		settings: React.createElement(Settings, { persist, reloadRPC: store => SET_RPC(rpc(store)) }),

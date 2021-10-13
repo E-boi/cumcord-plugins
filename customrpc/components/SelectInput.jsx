@@ -6,11 +6,19 @@ const classes = {
 };
 
 export default props => {
+	if (!Array.isArray(props.children)) props.children = [props.children];
 	const title = props.children;
 	delete props.children;
 	return (
-		<FormItem title={title} className={webpack.findByProps('marginBottom20').marginBottom20} required={props.required}>
-			<SelectTempWrapper {...props} />
+		<FormItem title={title[0]} className={classes.marginBottom20} required={props.required}>
+			{title[1] ? (
+				<div className='rpcsetting-select'>
+					<SelectTempWrapper {...props} />
+					{title[1]}
+				</div>
+			) : (
+				<SelectTempWrapper {...props} />
+			)}
 			<Divider className={[classes.marginTop20, classes.marginBottom20].join(' ')} />
 		</FormItem>
 	);

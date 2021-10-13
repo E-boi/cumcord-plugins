@@ -10,6 +10,7 @@ const components = {
 	ArrowDown: webpack.findByDisplayName('ArrowDropDown'),
 	ArrowUp: webpack.findByDisplayName('ArrowDropUp'),
 	SelectTempWrapper: webpack.findByDisplayName('SelectTempWrapper'),
+	Button: webpack.find(m => m.DropdownSizes),
 	Divider: ({ className }) => React.createElement('div', { className: `divider-3573oO dividerDefault-3rvLe- ${className}` }),
 };
 
@@ -21,6 +22,7 @@ export const FormItem = components.FormItem;
 export const ArrowDown = components.ArrowDown;
 export const ArrowUp = components.ArrowUp;
 export const SelectTempWrapper = components.SelectTempWrapper;
+export const Button = components.Button;
 export const Divider = components.Divider;
 
 export default components;
