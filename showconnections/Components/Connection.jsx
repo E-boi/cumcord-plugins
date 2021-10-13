@@ -14,7 +14,7 @@ export default ({ account }) => {
 				<img
 					alt={i18n.Messages.IMG_ALT_LOGO.format({ name: connection?.name })}
 					className={classes.connectedAccountIcon}
-					src={connection?.icon?.color}
+					src={connection?.icon?.darkPNG}
 				/>
 			</a>
 		</TooltipContainer>
