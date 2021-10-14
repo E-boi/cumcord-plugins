@@ -53,7 +53,7 @@ export default function () {
 				return channel.type !== 1 || !this.FAVORITE_FRIENDS.some(f => channel.recipients[0] === f.id);
 			});
 
-			if (res.props.children.find(x => x?.toString()?.includes('()=>t'))) return res;
+			if (res.props.children.find(x => x?.toString()?.includes('this.expanded&&t.React.createElement'))) return res;
 
 			const header = React.createElement(FavoriteFriend, { _this: this, expanded: this.expanded, friends: this.FAVORITE_FRIENDS });
 
