@@ -46,33 +46,33 @@ export default function () {
 		})
 	);
 
-	// this.injections['FavoriteFriends'].push(
-	// 	after('default', ChannelList, (_, res) => {
-	// 		res.props.privateChannelIds = res.props.privateChannelIds.filter(c => {
-	// 			const channel = getChannel(c);
-	// 			return channel.type !== 1 || !this.FAVORITE_FRIENDS.some(f => channel.recipients[0] === f.id);
-	// 		});
+	this.injections['FavoriteFriends'].push(
+		after('default', ChannelList, (_, res) => {
+			res.props.privateChannelIds = res.props.privateChannelIds.filter(c => {
+				const channel = getChannel(c);
+				return channel.type !== 1 || !this.FAVORITE_FRIENDS.some(f => channel.recipients[0] === f.id);
+			});
 
-	// 		if (res.props.children.find(x => x?.toString()?.includes('()=>t'))) return res;
+			if (res.props.children.find(x => x?.toString()?.includes('()=>t'))) return res;
 
-	// 		const header = React.createElement(FavoriteFriend, { _this: this, expanded: this.expanded, friends: this.FAVORITE_FRIENDS });
+			const header = React.createElement(FavoriteFriend, { _this: this, expanded: this.expanded, friends: this.FAVORITE_FRIENDS });
 
-	// 		const dms = this.FAVORITE_FRIENDS.map(
-	// 			f => () =>
-	// 				getChannel(getDMFromUserId(f.id)) &&
-	// 				!this.expanded &&
-	// 				React.createElement(DirectMessage, {
-	// 					'aria-posinset': 7,
-	// 					'aria-setsize': 54,
-	// 					tabIndex: -1,
-	// 					channel: getChannel(getDMFromUserId(f.id)),
-	// 					selected: res.props.selectedChannelId === getDMFromUserId(f.id),
-	// 				})
-	// 		);
-	// 		res.props.children.push(() => header, ...dms);
-	// 		return res;
-	// 	})
-	// );
+			const dms = this.FAVORITE_FRIENDS.map(
+				f => () =>
+					getChannel(getDMFromUserId(f.id)) &&
+					!this.expanded &&
+					React.createElement(DirectMessage, {
+						'aria-posinset': 7,
+						'aria-setsize': 54,
+						tabIndex: -1,
+						channel: getChannel(getDMFromUserId(f.id)),
+						selected: res.props.selectedChannelId === getDMFromUserId(f.id),
+					})
+			);
+			res.props.children.push(() => header, ...dms);
+			return res;
+		})
+	);
 
 	ChannelList.default.displayName = 'ConnectedPrivateChannelsList';
 }
