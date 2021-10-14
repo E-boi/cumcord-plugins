@@ -3,6 +3,8 @@ import { React } from '@cumcord/modules/common';
 const modal = webpack.findByProps('push', 'popWithKey');
 
 export const Tooltip = webpack.findByProps('TooltipContainer').TooltipContainer;
+export const ArrowDown = webpack.findByDisplayName('ArrowDropDown');
+export const ArrowUp = webpack.findByDisplayName('ArrowDropUp');
 export const Keyboard = props =>
 	React.createElement('span', { ...props, className: `${props.className || ''} ${webpack.findByProps('editIcon').editIcon}` });
 export const ConfirmModal = webpack.findByDisplayName('ConfirmModal');

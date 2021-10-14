@@ -312,4 +312,10 @@ html body .ccbf-ff-header.opened svg {
 		padding: 0px 40px;
 	}
 }
-/*# sourceMappingURL=style.css.map */
+
+.ccbf-icon > div {
+	height: 30px;
+	width: 30px;
+	line-height: 32px !important;
+	font-size: 14px !important;
+}

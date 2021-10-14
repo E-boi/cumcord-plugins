@@ -8,6 +8,9 @@ const DEFAULT_SETTINGS = [
 	['infomodal', true],
 	['displaystar', true],
 	['statuspopup', true],
+	['showtotal', true],
+	['mutualguilds', true],
+	['sortoptions', true],
 ];
 
 export default class Plugin {
