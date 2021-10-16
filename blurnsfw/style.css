@@ -1,0 +1,54 @@
+:root {
+	--blur-effect: blur(1px);
+	--blur-timing: 1s;
+}
+
+.nsfw-text {
+	background-color: rgb(240, 71, 71);
+	border-radius: 3px;
+	padding: 0 6px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 8px;
+	min-width: 16px;
+	min-height: 16px;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: 600;
+	color: #fff;
+	text-align: center;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+}
+
+.nsfw-badge {
+	position: relative;
+	margin-left: 4px;
+	line-height: 0;
+}
+
+.blur .embedWrapper-lXpS3L img,
+.blur .embedWrapper-lXpS3L video {
+	transition: var(--blur-timing) !important;
+	filter: var(--blur-effect) !important;
+}
+.blur .embedWrapper-lXpS3L img:hover,
+.blur .embedWrapper-lXpS3L video:hover {
+	transition: var(--blur-timing) !important;
+	filter: none !important;
+}
+
+.blurnsfwsetting-textinput {
+	display: flex;
+}
+
+.blurnsfwsetting-textinput div {
+	width: -webkit-fill-available;
+}
+
+.blurnsfwsetting-textinput button {
+	margin-left: 9px;
+}
