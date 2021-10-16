@@ -5,7 +5,7 @@ import css from './style.css';
 const {
 	SET_ACTIVITY: { handler: SET_RPC },
 } = webpack.findByProps('SET_ACTIVITY');
-console.log(SET_RPC);
+
 let cssInject;
 const defaults = {
 	rpc1: {
