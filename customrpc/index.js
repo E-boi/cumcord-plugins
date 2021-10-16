@@ -4,8 +4,8 @@ import Settings from './settings';
 import css from './style.css';
 const {
 	SET_ACTIVITY: { handler: SET_RPC },
-} = webpack.findByProps('INVITE_BROWSER');
-
+} = webpack.findByProps('SET_ACTIVITY');
+console.log(SET_RPC);
 let cssInject;
 const defaults = {
 	rpc1: {
@@ -52,6 +52,7 @@ function setDefault(store) {
 function rpc(store, disable = false) {
 	const selected = store.selected;
 	const rpc = {
+		isSocketConnected: () => true,
 		socket: {
 			id: 420,
 			application: {
