@@ -1,0 +1,7 @@
+{
+	"name": "Channel Menu",
+	"description": "Right on servers to get a list of channels.",
+	"author": "ugly-patootie#0611",
+	"file": "index.jsx",
+	"license": "MIT"
+}
