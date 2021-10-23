@@ -36,6 +36,7 @@ export default ({ persist }) => {
 						)
 					);
 				}
+				return res;
 			});
 			MessageContext.default.displayName = 'MessageContextMenu';
 		},
