@@ -1,17 +1,12 @@
+import { injectCSS } from '@cumcord/patcher';
+
 const createId = () => Math.random().toString(16).substring(2);
+const Themes = new Map();
 
 export async function loadTheme(url, themeId) {
 	const theme = await fetch(url);
 	if (!theme.ok) return;
-	const clone = theme.clone();
-	const { type } = await theme.blob();
-	if (type !== 'text/plain') return;
-	const id = themeId || createId();
-	const style = document.createElement('style');
-	style.className = `CUMCORD_INJECTED_THEME theme-${id}`;
-	style.appendChild(document.createTextNode(await clone.text()));
-	document.head.appendChild(style);
-	return { [id]: url };
+	Themes.set(themeId, injectCSS(await theme.text()));
 }
 
 export function loadThemes(themes) {
@@ -30,10 +25,11 @@ export function saveTheme(store, url) {
 }
 
 export function unloadThemes() {
-	const themes = document.querySelectorAll('.CUMCORD_INJECTED_THEME');
-	themes.forEach(elm => elm.remove());
+	Themes.forEach(t => t());
+	Themes.clear();
 }
 
 export function unloadTheme(id) {
-	document.querySelector(`.theme-${id}`)?.remove();
+	Themes.get(id)?.();
+	Themes.delete(id);
 }
