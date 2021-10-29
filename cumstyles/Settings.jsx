@@ -19,11 +19,20 @@ export default ({ persist }) => {
 								unloadTheme(theme[0]);
 								loadTheme(theme[1].url, theme[0]);
 								theme[1].applied = true;
+								persist.store.themes[theme[0]] = theme[1];
 							}}
 						>
 							Apply
 						</Button>
-						<Button onClick={() => unloadTheme(theme[0])}>Disable</Button>
+						<Button
+							onClick={() => {
+								unloadTheme(theme[0]);
+								theme[1].applied = false;
+								persist.store.themes[theme[0]] = theme[1];
+							}}
+						>
+							Disable
+						</Button>
 						<Button
 							onClick={() => {
 								unloadTheme(theme[0]);
