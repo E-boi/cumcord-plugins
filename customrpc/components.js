@@ -5,7 +5,7 @@ const components = {
 	Input: webpack.findByDisplayName('TextInput'),
 	SwitchItem: webpack.findByDisplayName('SwitchItem'),
 	Text: webpack.findByDisplayName('Text'),
-	UserPopout: webpack.findByDisplayName('UserActivitySection'),
+	UserPopout: webpack.findByDisplayName('UserProfileActivity'),
 	FormItem: webpack.findByDisplayName('FormItem'),
 	ArrowDown: webpack.findByDisplayName('ArrowDropDown'),
 	ArrowUp: webpack.findByDisplayName('ArrowDropUp'),
