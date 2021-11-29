@@ -2,15 +2,14 @@ import { after } from '@cumcord/patcher';
 import { webpack } from '@cumcord/modules';
 import { React } from '@cumcord/modules/common';
 import { showToast } from '@cumcord/ui/toasts';
+import {copyText} from '@cumcord/utils'
 import css from './style.css';
 
 let injection;
 let cssInject;
+const ChannelItem = webpack.find(m => m.default?.displayName === 'ChannelItem');
 
 export default () => {
-	const ChannelItem = webpack.find(m => m.default?.displayName === 'ChannelItem');
-	const { copy } = webpack.findByProps('clipboard').clipboard;
-
 	return {
 		onLoad() {
 			cssInject = css();
@@ -18,7 +17,7 @@ export default () => {
 				res.props.children.props.children[1].props.children[1].props.children.unshift(
 					React.createElement(LinkIcon, {
 						onClick: () => {
-							copy(`<#${channel.id}>`);
+							copyText(`<#${channel.id}>`);
 							showToast({ title: `Copied mention for #${channel.name}`, duration: 3000 });
 						},
 					})
