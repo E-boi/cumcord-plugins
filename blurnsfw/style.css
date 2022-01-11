@@ -30,13 +30,13 @@
 	line-height: 0;
 }
 
-.blur .embedWrapper-lXpS3L img,
-.blur .embedWrapper-lXpS3L video {
+.blur .embedWrapper-1MtIDg img,
+.blur .embedWrapper-1MtIDg video {
 	transition: var(--blur-timing) !important;
 	filter: var(--blur-effect) !important;
 }
-.blur .embedWrapper-lXpS3L img:hover,
-.blur .embedWrapper-lXpS3L video:hover {
+.blur .embedWrapper-1MtIDg img:hover,
+.blur .embedWrapper-1MtIDg video:hover {
 	transition: var(--blur-timing) !important;
 	filter: none !important;
 }
