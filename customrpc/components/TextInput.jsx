@@ -1,5 +1,6 @@
 import { webpack } from '@cumcord/modules';
-import { Divider, FormItem, Input } from '../components';
+import { FormItem, Input } from '../components';
+import Divider from './Divider';
 
 const classes = {
 	...webpack.findByProps('marginBottom20'),

@@ -1,5 +1,6 @@
 import { webpack } from '@cumcord/modules';
-import { Text, ArrowDown, ArrowUp, Divider } from '../components';
+import { Text, ArrowDown, ArrowUp } from '../components';
+import Divider from './Divider';
 
 const classes = {
 	...webpack.findByProps('wrapper', 'base'),

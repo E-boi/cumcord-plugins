@@ -151,10 +151,10 @@ export default ({ persist, reloadRPC }) => {
 				</TextInput>
 			</Category>
 
-			<Text className={`${classes.h5} ${classes.marginBottom4}`}>Your RPC:</Text>
+			{/* <Text className={`${classes.h5} ${classes.marginBottom4}`}>Your RPC:</Text>
 			<div className={classes.marginBottom20} style={{ backgroundColor: 'var(--background-floating)' }}>
 				<UserPopout user={getCurrentUser()} />
-			</div>
+			</div> */}
 		</div>
 	);
 };
