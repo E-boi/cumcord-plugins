@@ -9,6 +9,15 @@ let cssInject;
 const Popout = webpack.find(m => m.default?.displayName === 'UserPopoutBody');
 
 export default () => {
+	// e
+	window.webpackChunkdiscord_app.push([
+		[Math.random().toString(36)],
+		{},
+		e => {
+			e(868950);
+		},
+	]);
+	
 	return {
 		onLoad() {
 			cssInject = css();

@@ -3,10 +3,10 @@ import { i18n } from '@cumcord/modules/common';
 
 const { TooltipContainer } = webpack.findByProps('TooltipContainer');
 
-const classes = webpack.findByProps('connectedAccount');
 const { get } = webpack.findByProps('get', 'isSupported');
 
 export default ({ account }) => {
+	const classes = webpack.findByProps('connectedAccount');
 	const connection = get(account.type);
 	return (
 		<TooltipContainer className='sc-connection scrollbarGhostHairline-1mSOM1' text={account.name}>
