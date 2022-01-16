@@ -2,12 +2,12 @@
   width: 650px;
 }
 
-.acc-switch-modal .separator-2-RRj_ {
+.acc-switch-modal .separator-2lLxgC {
   -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 
-.acc-switch-modal .content-1LAB8Z {
+.acc-switch-modal .content-2hZxGK {
   background-color: var(--background-tertiary);
   padding: 10px 4px 0 10px !important;
   margin-bottom: 20px !important;
@@ -15,23 +15,23 @@
   margin: 0 10px;
 }
 
-.acc-switch-modal .content-1LAB8Z [aria-hidden='true'] {
+.acc-switch-modal .content-2hZxGK [aria-hidden='true'] {
   display: none;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ {
   background-color: transparent;
   margin-bottom: 10px;
   border: none;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account {
   background-color: var(--background-secondary);
   -webkit-transition: background-color 250ms ease;
   transition: background-color 250ms ease;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
   border-radius: 5px;
   display: -webkit-box;
@@ -40,78 +40,78 @@
   padding: 10px;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-details {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .accountName {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-details .accountName {
   color: var(--text-normal);
   -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
   font-size: large;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .accountName [aria-label='Edit'] {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-details .accountName [aria-label='Edit'] {
   position: relative;
   margin-left: 5px;
   top: 1px;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .Token {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-details .Token {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-top: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .Token .tokenValue {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-details .Token .tokenValue {
   -webkit-user-select: none !important;
-     -moz-user-select: none !important;
-      -ms-user-select: none !important;
-          user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
   background-color: var(--background-secondary-alt);
   color: var(--background-secondary-alt);
   -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
   border-radius: 5px;
   font-size: 12px;
   margin-left: 5px;
   padding: 3px;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-details .Token .tokenValue.reveal {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-details .Token .tokenValue.reveal {
   background-color: transparent;
   color: var(--text-normal);
   cursor: pointer;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-buttons {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-buttons {
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -120,13 +120,13 @@
   top: 5px;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-buttons button {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-buttons button {
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   min-height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -136,26 +136,26 @@
   padding: 0;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account .account-buttons button:hover {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account .account-buttons button:hover {
   background-color: #b13234;
 }
 
-.acc-switch-modal .content-1LAB8Z .cardPrimary-1Hv-to .account img {
+.acc-switch-modal .content-2hZxGK .cardPrimary-3qRT__ .account img {
   margin-right: 13px;
   border-radius: 5%;
   height: 60px;
 }
 
-.acc-switch-modal .content-1LAB8Z .selected-account {
+.acc-switch-modal .content-2hZxGK .selected-account {
   background-color: var(--background-accent) !important;
 }
 
-.acc-switch-modal .footer-2gL1pp .lookFilled-1Gx00P.colorBrand-3pXr91:nth-child(2) {
+.acc-switch-modal .footer-31IekZ .lookFilled-yCfaCM.colorBrand-I6CyqQ:nth-child(2) {
   position: absolute;
   left: 15px;
 }
 
-.acc-switch-modal .footer-2gL1pp .lookFilled-1Gx00P.colorGrey-2DXtkV {
+.acc-switch-modal .footer-31IekZ .lookFilled-yCfaCM.colorGrey-2iAG-B {
   cursor: not-allowed;
 }
 

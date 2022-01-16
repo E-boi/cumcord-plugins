@@ -1,13 +1,18 @@
 import { webpack } from '@cumcord/modules';
-import { React } from '@cumcord/modules/common';
 
 export const Tooltip = webpack.findByProps('TooltipContainer').TooltipContainer;
-const modal = webpack.findByProps('push', 'popWithKey');
+const modal = webpack.findByProps('openModalLazy');
+let currentOpenModal;
 
-export const open = component => modal.push(() => React.createElement(component));
-export const close = () => modal.pop();
+export const open = async component =>
+  (currentOpenModal = modal.openModal(e => {
+    component.props = { ...component.props, ...e };
+    return component;
+  }));
 
-export const Modal = webpack.findByDisplayName('DeprecatedModal');
+export const close = () => modal.closeModal(currentOpenModal);
+
+export const Modal = webpack.findByProps('ModalRoot');
 export const FormTitle = webpack.findByDisplayName('FormTitle');
 export const Card = webpack.findByDisplayName('Card');
 export const Button = webpack.find(m => m.DropdownSizes);
