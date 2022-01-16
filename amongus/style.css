@@ -20,16 +20,17 @@
   border-radius: 0;
 }
 
-.avatar-3Bhz0p,
-.guildIcon-2Tpnad.iconSizeSmol-2Dw61G,
-.replyAvatar-1K9Wmr,
-.embedAuthorIcon--1zR3L,
-.iconSizeMedium-2OqPjI.listAvatar-1BbvHX,
-.avatar-1BDn8e,
-.guildIcon-1zxZMV,
-.voiceSectionGuildImage-3HwnfL,
+.avatar-2e8lTP,
+.guildIcon-2I5sfu.iconSizeSmol-qsFaRK,
+.replyAvatar-sHd2sU,
+.embedAuthorIcon-3pnkS4,
+.listAvatar-2bU5Uh,
+.avatar-3QF_VA,
+.avatar-b5OQ1N,
+.avatarContainer-3FF_Km,
+.largeImage-2EIggm,
 .avatarUploader-2UF9NL,
-#app-mount .peopleColumn-29fq28 .avatar-3W3CeO::before {
+.wrapper-28eC3z {
   -webkit-mask-image: var(--avatar-shape);
   -webkit-mask-size: contain;
   -webkit-mask-position: center;
@@ -58,7 +59,7 @@
   z-index: 2;
 }
 
-.usernameSpeaking-RmltQx::before {
+.usernameSpeaking-3FKv6H::before {
   content: "";
   margin: -1px 0 0 -1px;
   width: 26px;
@@ -77,11 +78,11 @@
 }
 
 .container-3baos1 .avatarStack-2Dr8S9 .avatar-VxgULZ,
-.voiceUser-1K6Xox .avatar-VxgULZ {
+.voiceUser-3nRK-K .avatar-3FKimL {
   z-index: 2;
 }
 
-.container-3baos1 .avatarStack-2Dr8S9 .avatar-VxgULZ:first-child:not(:last-child) {
+/* .container-YkUktl .avatarStack-3vfSFa .avatar-b5OQ1N:first-child:not(:last-child) {
   -webkit-mask-image: var(--avatar-shape);
   -webkit-mask-size: contain;
   -webkit-mask-position: center;
@@ -92,7 +93,7 @@
   width: 28px;
   height: 28px;
   margin: 2px;
-}
+} */
 
 .avatarSpeaking-2c8-9i {
   -webkit-mask-image: var(--avatar-shape);
