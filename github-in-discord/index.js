@@ -45,12 +45,10 @@ export default ({ persist }) => {
     onLoad() {
       cssInject = css();
       lazyPatchContextMenu('MessageContextMenu', ContextMenu => {
-        console.log(ContextMenu);
         injections.push(
           after('default', ContextMenu, ([{ message, target }], res) => {
             if (!message.content.includes('https://github.com/') || !message.content.includes('https://github.com/')) return;
             const url = target.href?.match(ghregex)?.[0] || extractURL(message.content);
-            console.log(res);
             if (url.split('/').length < 5) return res;
             if (!findInReactTree(res, c => c?.props?.id === 'githubModal')) {
               res.props.children.splice(
