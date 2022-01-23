@@ -1,8 +1,8 @@
 import { webpack } from '@cumcord/modules';
 
 const classes = {
-	divider: webpack.findByPropsAll('divider')[1].divider,
-	dividerDefault: webpack.findByProps('dividerDefault').dividerDefault,
+  dividerDefault: webpack.findByProps('dividerDefault').dividerDefault,
+  divider: webpack.find(m => m.divider?.includes('divider-_')).divider,
 };
 
 export default ({ className }) => <div className={`${classes.divider} ${classes.dividerDefault} ${className}`} />;
