@@ -1,0 +1,73 @@
+.channel-1Shao0 > .layout-1qmrhw > .children-283-lq {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.cc-pd-pin {
+  width: 15px;
+  min-width: 15px;
+  min-height: 15px;
+  height: 15px;
+  display: none;
+  opacity: 0.4;
+}
+
+.channel-1Shao0 > .layout-1qmrhw:hover {
+  .cc-pd-pin {
+    display: block;
+    opacity: 0.8;
+  }
+}
+
+.cc-pd-guildpins {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  .wrapper-1VLyxH {
+    margin-bottom: 8px;
+    height: 48px !important;
+    width: 48px !important;
+  }
+}
+
+.cc-pd-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cc-pd-arrow {
+  height: 18px;
+  width: 18px;
+}
+
+.cc-pd-arrow > polygon {
+  fill: var(--channels-default);
+}
+
+.cc-pd-header:hover .cc-pd-arrow polygon {
+  fill: var(--interactive-hover);
+}
+
+.cc-pp-setting-input {
+  display: flex;
+  .inputWrapper-1YNMmM {
+    width: -webkit-fill-available;
+  }
+  button {
+    margin-left: 9px;
+    min-width: 130px;
+    min-height: 40px;
+  }
+}
