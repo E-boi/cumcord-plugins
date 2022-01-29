@@ -1,6 +1,6 @@
 {
-  "name": "Better friends",
-  "description": "Improves Discord's friend feature in a multitude of ways",
+  "name": "PinDMs",
+  "description": "Allows to pin dms at the top of your dms/server list",
   "author": "ugly-patootie#0611",
   "file": "index.js",
   "license": "MIT"
