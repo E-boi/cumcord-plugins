@@ -5,6 +5,7 @@ import { findInReactTree } from '@cumcord/utils';
 import { setupContextMenu } from '../utils';
 
 const ContextMenus = ['DMUserContextMenu', 'GroupDMUserContextMenu', 'GuildChannelUserContextMenu', 'GroupDMContextMenu'];
+const { getDMFromUserId, getChannel } = findByProps('getDMFromUserId');
 
 async function lazyPatchContextMenu(displayName, patch) {
   const m = findByDisplayName(displayName, false);
@@ -39,13 +40,15 @@ export default function () {
   ContextMenus.forEach(contextmenu => {
     lazyPatchContextMenu(contextmenu, ContextMenu => {
       this.injections.push(
-        after('default', ContextMenu, ([{ channel }], res) => {
+        after('default', ContextMenu, ([args], res) => {
           const group = findInReactTree(
             res,
             c => Array.isArray(c) && c.find(item => item?.props?.id === 'user-profile' || item?.props?.id === 'remove-icon')
           );
           if (!group) return res;
-          group.push(setupContextMenu(channel, this.settings, true));
+          const channel = args.channel || getChannel(getDMFromUserId(args.user.id));
+          if (!channel) return;
+          group.push(setupContextMenu(args.channel || getChannel(getDMFromUserId(args.user.id)), this.settings, true));
           return res;
         })
       );

@@ -8,6 +8,7 @@ const { scroller } = findByProps('privateChannelsHeaderContainer');
 
 function updateDmList() {
   const el = document.getElementsByClassName(scroller)[0];
+  if (!el) return;
   el.dispatchEvent(new Event('focusin'));
 
   setTimeout(() => {
