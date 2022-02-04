@@ -14,9 +14,10 @@ export default () => {
 		[Math.random().toString(36)],
 		{},
 		e => {
-			e(868950);
+			e(624177);
 		},
 	]);
+	window.webpackChunkdiscord_app.pop();
 	
 	return {
 		onLoad() {
