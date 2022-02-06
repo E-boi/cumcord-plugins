@@ -1,6 +1,6 @@
 {
   "name": "User Details",
-  "description": "e",
+  "description": "Displays the creation date and joined date in user popouts and modals",
   "author": "ugly-patootie#0611",
   "file": "index.js",
   "license": "MIT"
