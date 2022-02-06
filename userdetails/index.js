@@ -46,14 +46,18 @@ export default {
     injections.push(
       after('UserPopoutInfo', Popout, ([{ user }], res) => {
         const member = getMember(getGuildId(), user.id);
-        if (!member) return;
+        if (!member) {
+          const createdAt = dateToString(user.createdAt);
+          res.props.children.splice(2, 0, React.createElement(Text, null, `Created on ${createdAt}`));
+          return res;
+        }
         const joinedAt = dateToString(new Date(member.joinedAt));
-        const createAt = dateToString(user.createdAt);
+        const createdAt = dateToString(user.createdAt);
         res.props.children.splice(
           2,
           0,
           React.createElement('div', null, [
-            React.createElement(Text, null, `Created on ${createAt}`),
+            React.createElement(Text, null, `Created on ${createdAt}`),
             React.createElement(Text, null, `Joined on ${joinedAt}`),
           ])
         );
