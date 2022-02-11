@@ -15,7 +15,7 @@ export default function () {
   const _this = this;
   this.injections.push(
     after('render', PrivateChannel.prototype, function (_, res) {
-      const children = res.props.children();
+      const children = res.props.children({ role: 'listitem' });
       res.props.children = () => {
         const pin = React.createElement(
           Tooltip,
@@ -30,7 +30,8 @@ export default function () {
             icon: Pin,
           })
         );
-        children.props.children = [pin, children.props.children];
+        children.props.children.props.children.splice(1, 0, pin);
+        console.log(children);
         return children;
       };
       return res;
