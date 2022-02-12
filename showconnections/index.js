@@ -7,32 +7,31 @@ import css from './style.css';
 let injection;
 let cssInject;
 const Popout = webpack.find(m => m.default?.displayName === 'UserPopoutBody');
+const { openUserProfileModal, closeUserProfileModal } = webpack.findByProps('openUserProfileModal');
 
 export default () => {
-	// e
-	window.webpackChunkdiscord_app.push([
-		[Math.random().toString(36)],
-		{},
-		e => {
-			e(624177);
-		},
-	]);
-	window.webpackChunkdiscord_app.pop();
-	
-	return {
-		onLoad() {
-			cssInject = css();
-			injection = after('default', Popout, ([{ user }], res) => {
-				if (!res) return res;
-				res.props.children.splice(2, 0, React.createElement(Connections, { user: user.id }));
-				return res;
-			});
+  if (!webpack.findByProps('connectedAccount')) {
+    openUserProfileModal({
+      userId: '458805348669718559',
+      guildId: null,
+    });
+    setTimeout(() => closeUserProfileModal(), 100);
+  }
 
-			Popout.default.displayName = 'UserPopoutBody';
-		},
-		onUnload() {
-			injection?.();
-			cssInject?.();
-		},
-	};
+  return {
+    onLoad() {
+      cssInject = css();
+      injection = after('default', Popout, ([{ user }], res) => {
+        if (!res) return res;
+        res.props.children.splice(2, 0, React.createElement(Connections, { user: user.id }));
+        return res;
+      });
+
+      Popout.default.displayName = 'UserPopoutBody';
+    },
+    onUnload() {
+      injection?.();
+      cssInject?.();
+    },
+  };
 };
