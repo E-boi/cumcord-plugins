@@ -31,7 +31,6 @@ export default function () {
           })
         );
         children.props.children.props.children.splice(1, 0, pin);
-        console.log(children);
         return children;
       };
       return res;
@@ -40,27 +39,29 @@ export default function () {
   this.injections.push(
     after('default', ConnectedPrivateChannelsList, (args, res) => {
       const idList = [];
-      const selected = res.props.children.props.selectedChannelId;
+      const selected = res.props.children.props.children.props.selectedChannelId;
       const categories = this.settings.get('categories', []);
 
       categories.forEach(cat => idList.push(...cat.dms));
 
-      res.props.children.props.privateChannelIds = res.props.children.props.privateChannelIds.filter(id => !idList.includes(id));
-      res.props.children.props.children = [...res.props.children.props.children];
+      res.props.children.props.children.props.privateChannelIds = res.props.children.props.children.props.privateChannelIds.filter(
+        id => !idList.includes(id)
+      );
+      res.props.children.props.children.props.children = [...res.props.children.props.children.props.children];
 
       categories.forEach(category => {
         const title = React.createElement(CategoryTitle, { category, settings: this.settings });
-        res.props.children.props.children.push(title);
+        res.props.children.props.children.props.children.push(title);
         if (!category.collapsed) {
           const dms = category.dms
             .sort((a, b) => lastMessageId(b) - lastMessageId(a))
             .map(id => React.createElement(Channel, { channelId: id, selected: selected === id }));
 
-          res.props.children.props.children.push(...dms);
+          res.props.children.props.children.props.children.push(...dms);
         } else if (category.dms.includes(selected)) {
           const dm = category.dms.find(id => id === selected);
           if (!dm) return; // idk why not
-          res.props.children.props.children.push(React.createElement(Channel, { channelId: dm, selected }));
+          res.props.children.props.children.props.children.push(React.createElement(Channel, { channelId: dm, selected }));
         }
       });
       return res;
