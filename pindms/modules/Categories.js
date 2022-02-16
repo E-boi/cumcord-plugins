@@ -1,6 +1,7 @@
 import { findByProps, findByDisplayName } from '@cumcord/modules/webpack';
 import { React } from '@cumcord/modules/common';
 import { after } from '@cumcord/patcher';
+import { findInReactTree } from '@cumcord/utils';
 import { Pin, Tooltip } from '../components';
 import { setupContextMenu } from '../utils';
 import Channel from '../components/Channel';
@@ -37,31 +38,29 @@ export default function () {
     })
   );
   this.injections.push(
-    after('default', ConnectedPrivateChannelsList, (args, res) => {
+    after('default', ConnectedPrivateChannelsList, (_, res) => {
       const idList = [];
-      const selected = res.props.children.props.children.props.selectedChannelId;
+      const props = findInReactTree(res, e => e.selectedChannelId);
       const categories = this.settings.get('categories', []);
 
       categories.forEach(cat => idList.push(...cat.dms));
 
-      res.props.children.props.children.props.privateChannelIds = res.props.children.props.children.props.privateChannelIds.filter(
-        id => !idList.includes(id)
-      );
-      res.props.children.props.children.props.children = [...res.props.children.props.children.props.children];
+      props.privateChannelIds = props.privateChannelIds.filter(id => !idList.includes(id));
+      props.children = [...props.children];
 
       categories.forEach(category => {
         const title = React.createElement(CategoryTitle, { category, settings: this.settings });
-        res.props.children.props.children.props.children.push(title);
+        props.children.push(title);
         if (!category.collapsed) {
           const dms = category.dms
             .sort((a, b) => lastMessageId(b) - lastMessageId(a))
-            .map(id => React.createElement(Channel, { channelId: id, selected: selected === id }));
+            .map(id => React.createElement(Channel, { channelId: id, selected: props.selectedChannelId === id }));
 
-          res.props.children.props.children.props.children.push(...dms);
-        } else if (category.dms.includes(selected)) {
-          const dm = category.dms.find(id => id === selected);
+          props.children.push(...dms);
+        } else if (category.dms.includes(props.selectedChannelId)) {
+          const dm = category.dms.find(id => id === props.selectedChannelId);
           if (!dm) return; // idk why not
-          res.props.children.props.children.props.children.push(React.createElement(Channel, { channelId: dm, selected }));
+          props.children.push(React.createElement(Channel, { channelId: dm, selected: true }));
         }
       });
       return res;
