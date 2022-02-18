@@ -1,4 +1,4 @@
-import { findByDisplayName, findByProps } from '@cumcord/modules/webpack';
+import { findByDisplayName, findByProps, findAsync } from '@cumcord/modules/webpack';
 import { after } from '@cumcord/patcher';
 import { React, i18n } from '@cumcord/modules/common';
 import { persist } from '@cumcord/pluginData';
@@ -10,38 +10,12 @@ const Text = findByDisplayName('Text');
 const Popout = findByProps('UserPopoutInfo');
 const { getMember } = findByProps('getMember');
 const { getGuildId } = findByProps('getLastSelectedGuildId');
-
-function lazyPatchProfileModal(filter, patch) {
-  const m = findByDisplayName(filter, false);
-  if (m) patch(m);
-  else {
-    const module = findByProps('openUserProfileModal');
-    injections.unshift(
-      after('openUserProfileModal', module, args => {
-        setTimeout(() => patch(findByDisplayName(filter, false)), 500);
-        injections[0]?.();
-        return args;
-      })
-    );
-  }
-}
+let unloaded = false;
 
 export default {
-  onLoad() {
+  async onLoad() {
+    unloaded = false;
     injections.push(css());
-
-    lazyPatchProfileModal('UserProfileModalHeader', Modal => {
-      injections.push(
-        after('default', Modal, ([{ user }], res) => {
-          const createdAt = dateToString(user.createdAt);
-          res.props.children.splice(3, 0, React.createElement(Text, { className: 'createdAt-text' }, `Created on ${createdAt}`));
-          return res;
-        })
-      );
-      // update modal if opened
-      document.querySelector('[aria-controls="mutual_guilds-tab"]')?.click?.();
-      document.querySelector('[aria-controls="user_info-tab"]')?.click?.();
-    });
 
     injections.push(
       after('UserPopoutInfo', Popout, ([{ user }], res) => {
@@ -64,9 +38,22 @@ export default {
         return res;
       })
     );
+
+    const UserProfileModalHeader = await findAsync(() => findByDisplayName('UserProfileModalHeader', false));
+    console.log(UserProfileModalHeader, unloaded);
+    if (unloaded) return;
+
+    injections.push(
+      after('default', UserProfileModalHeader, ([{ user }], res) => {
+        const createdAt = dateToString(user.createdAt);
+        res.props.children.splice(3, 0, React.createElement(Text, { className: 'createdAt-text' }, `Created on ${createdAt}`));
+        return res;
+      })
+    );
   },
 
   onUnload() {
+    unloaded = true;
     injections.forEach(i => i?.());
   },
 
