@@ -41,6 +41,7 @@ export default function () {
     after('default', ConnectedPrivateChannelsList, (_, res) => {
       const idList = [];
       const props = findInReactTree(res, e => e?.selectedChannelId);
+      if (!props) return res;
       const categories = this.settings.get('categories', []);
 
       categories.forEach(cat => idList.push(...cat.dms));
