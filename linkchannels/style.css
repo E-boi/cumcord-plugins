@@ -1,12 +1,12 @@
 .linkChannels {
-	display: none;
+  display: none;
 }
 
-.iconVisibility-sTNpHs:hover .linkChannels {
-	display: block;
-	cursor: pointer;
+div[class*='iconVisibility']:hover .linkChannels {
+  display: block;
+  cursor: pointer;
 }
 
 .linkChannels {
-	z-index: 999;
+  z-index: 999;
 }
