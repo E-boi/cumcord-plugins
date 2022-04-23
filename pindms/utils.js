@@ -110,6 +110,7 @@ function setSetting(setting, value) {
 
 function getSetting(setting, defaultValue) {
   // makes it easy to get settings like "catgory[idx].dms"
+  console.log(persist);
   return window._.get(persist.ghost, setting) ?? defaultValue;
 }
 
