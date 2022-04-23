@@ -1,8 +1,8 @@
 import { Button, close, FormTitle, Modal } from '.';
-import { updateDmList } from '../utils';
+import { getSetting, setSetting, updateDmList } from '../utils';
 import TextInput from './TextInput';
 
-export default ({ transitionState, dmId, settings }) => {
+export default ({ transitionState, dmId }) => {
   const [name, setName] = React.useState('');
   return (
     <Modal.ModalRoot transitionState={transitionState}>
@@ -18,14 +18,14 @@ export default ({ transitionState, dmId, settings }) => {
         <Button
           disabled={!name}
           onClick={() => {
-            const categories = settings.get('categories', []);
+            const categories = getSetting('categories', []);
             categories.push({
               name,
               dms: [dmId],
               pos: categories.length,
               collapsed: false,
             });
-            settings.set('categories', categories);
+            setSetting('categories', categories);
             close();
             updateDmList();
           }}

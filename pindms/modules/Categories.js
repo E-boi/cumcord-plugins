@@ -3,7 +3,7 @@ import { React } from '@cumcord/modules/common';
 import { after } from '@cumcord/patcher';
 import { findInReactTree } from '@cumcord/utils';
 import { Pin, Tooltip } from '../components';
-import { setupContextMenu } from '../utils';
+import { getSetting, setupContextMenu } from '../utils';
 import Channel from '../components/Channel';
 import CategoryTitle from '../components/CategoryTitle';
 
@@ -25,7 +25,7 @@ export default function () {
             className: 'cc-pd-pin',
             onClick: e => {
               e.preventDefault();
-              const menu = setupContextMenu(this.props.channel, _this.settings);
+              const menu = setupContextMenu(this.props.channel);
               openContextMenu(e, () => menu);
             },
             icon: Pin,
@@ -42,7 +42,7 @@ export default function () {
       const idList = [];
       const props = findInReactTree(res, e => e?.selectedChannelId);
       if (!props) return res;
-      const categories = this.settings.get('categories', []);
+      const categories = getSetting('categories', []);
 
       categories.forEach(cat => idList.push(...cat.dms));
 
@@ -50,7 +50,7 @@ export default function () {
       props.children = [...props.children];
 
       categories.forEach(category => {
-        const title = React.createElement(CategoryTitle, { category, settings: this.settings });
+        const title = React.createElement(CategoryTitle, { category });
         props.children.push(title);
         if (!category.collapsed) {
           const dms = category.dms

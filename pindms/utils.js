@@ -3,6 +3,7 @@ import { findByProps } from '@cumcord/modules/webpack';
 import { open } from './components';
 import ContextMenu from './components/ContextMenu';
 import NewCatgoryModal from './components/NewCatgoryModal';
+import { persist } from '@cumcord/pluginData';
 
 const { scroller } = findByProps('privateChannelsHeaderContainer');
 
@@ -16,10 +17,10 @@ function updateDmList() {
   }, 10);
 }
 
-function setupContextMenu(channel, settings, rawItems) {
+function setupContextMenu(channel, rawItems) {
   let items = [];
-  const category = settings.get('categories', []).find(category => category.dms.includes(channel.id));
-  const isInGuildList = settings.get('guildlist', []).includes(channel.id);
+  const category = getSetting('categories', []).find(category => category.dms.includes(channel.id));
+  const isInGuildList = getSetting('guildlist', []).includes(channel.id);
 
   if (!category)
     items.push({
@@ -34,20 +35,20 @@ function setupContextMenu(channel, settings, rawItems) {
             color: 'colorBrand',
             label: 'Add to new catgory',
             action() {
-              open(React.createElement(NewCatgoryModal, { dmId: channel.id, settings }));
+              open(React.createElement(NewCatgoryModal, { dmId: channel.id }));
             },
           },
           { type: 'separator' },
         ];
 
-        settings.get('categories', []).forEach(category1 =>
+        getSetting('categories', []).forEach(category1 =>
           items1.push({
             type: 'item',
             id: `add-to-category-${category1.name}`,
             label: category1.name,
             action() {
               category1.dms.push(channel.id);
-              settings.set(`categories[${category1.pos}]`, category1);
+              setSetting(`categories[${category1.pos}]`, category1);
               updateDmList();
             },
           })
@@ -64,7 +65,7 @@ function setupContextMenu(channel, settings, rawItems) {
       label: `Remove from ${category.name}`,
       action() {
         category.dms = category.dms.filter(id => id !== channel.id);
-        settings.set(`categories[${category.pos}]`, category);
+        setSetting(`categories[${category.pos}]`, category);
         updateDmList();
       },
     });
@@ -75,9 +76,9 @@ function setupContextMenu(channel, settings, rawItems) {
       id: 'add-to-list',
       label: 'Pin to Server List',
       action: () => {
-        const updatedList = settings.get('guildlist', []);
+        const updatedList = getSetting('guildlist', []);
         updatedList.push(channel.id);
-        settings.set('guildlist', updatedList);
+        setSetting('guildlist', updatedList);
         FluxDispatcher.dirtyDispatch({ type: 'PDM_GUILDLIST_ADD' });
       },
     });
@@ -88,8 +89,8 @@ function setupContextMenu(channel, settings, rawItems) {
       label: 'Unpin from Server List',
       color: 'colorDanger',
       action: () => {
-        const updatedList = settings.get('guildlist', []).filter(id => id !== channel.id);
-        settings.set('guildlist', updatedList);
+        const updatedList = getSetting('guildlist', []).filter(id => id !== channel.id);
+        setSetting('guildlist', updatedList);
         FluxDispatcher.dirtyDispatch({ type: 'PDM_GUILDLIST_REMOVE' });
       },
     });
@@ -102,4 +103,14 @@ function setupContextMenu(channel, settings, rawItems) {
   return ContextMenu({ items, rawItems });
 }
 
-export { setupContextMenu, updateDmList };
+function setSetting(setting, value) {
+  // same reason before but to set
+  persist.store = window._.set(persist.ghost, setting, value);
+}
+
+function getSetting(setting, defaultValue) {
+  // makes it easy to get settings like "catgory[idx].dms"
+  return window._.get(persist.ghost, setting) ?? defaultValue;
+}
+
+export { setupContextMenu, updateDmList, setSetting, getSetting };

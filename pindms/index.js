@@ -20,7 +20,7 @@ const settings = {
 export default () => {
   Object.keys(modules).forEach(m => {
     patches[m] = [];
-    modules[m] = modules[m].bind({ injections: patches[m], settings });
+    modules[m] = modules[m].bind({ injections: patches[m] });
   });
 
   return {

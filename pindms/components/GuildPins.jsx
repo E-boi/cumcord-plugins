@@ -1,7 +1,7 @@
 import { findByProps, findByDisplayName } from '@cumcord/modules/webpack';
 import { FluxDispatcher, constants } from '@cumcord/modules/common';
 import { Tooltip } from '.';
-import { setupContextMenu } from '../utils';
+import { getSetting, setupContextMenu } from '../utils';
 
 const { default: PrivateChannel } = findByProps('DirectMessage');
 const { getUser } = findByProps('getUser', 'findByTag');
@@ -13,11 +13,11 @@ const { transitionTo } = findByProps('transitionTo');
 const { getMentionCount } = findByProps('getMentionCount');
 const Pill = findByDisplayName('AnimatedHalfPill');
 
-export default ({ settings }) => {
-  const [ids, setIds] = React.useState(settings.get('guildlist', []));
+export default () => {
+  const [ids, setIds] = React.useState(getSetting('guildlist', []));
 
   React.useEffect(() => {
-    const update = ({ removeAll }) => setIds(removeAll ? [] : [...settings.get('guildlist', [])]);
+    const update = ({ removeAll }) => setIds(removeAll ? [] : [...getSetting('guildlist', [])]);
     FluxDispatcher.subscribe('PDM_GUILDLIST_ADD', update);
     FluxDispatcher.subscribe('PDM_GUILDLIST_REMOVE', update);
 
@@ -27,10 +27,10 @@ export default ({ settings }) => {
     };
   });
 
-  return ids.map(id => <Pin channelId={id} settings={settings} />);
+  return ids.map(id => <Pin channelId={id} />);
 };
 
-function Pin({ channelId, settings }) {
+function Pin({ channelId }) {
   const [hovered, setHovered] = React.useState(false);
   const [selected, setSelected] = React.useState(false);
   const [unread, setUnread] = React.useState(!!getMentionCount(channelId));
@@ -73,7 +73,7 @@ function Pin({ channelId, settings }) {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onContextMenu={e => {
-          openContextMenu(e, () => setupContextMenu(channel, settings));
+          openContextMenu(e, () => setupContextMenu(channel));
         }}
         onClick={() => transitionTo(constants.Routes.CHANNEL('@me', channel.id))}
         className='cc-pd-guildpins'

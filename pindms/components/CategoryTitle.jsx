@@ -1,10 +1,10 @@
 import { findByProps } from '@cumcord/modules/webpack';
 import { Arrow, Clickable, ListSectionItem } from '.';
-import { updateDmList } from '../utils';
+import { setSetting, updateDmList } from '../utils';
 
 const classes = { ...findByProps('privateChannelsHeaderContainer'), ...findByProps('containerDefault', 'name') };
 
-export default ({ category, settings }) => {
+export default ({ category }) => {
   const [collapsed, setCollapsed] = React.useState(category.collapsed);
 
   if (!category.dms.length) return null;
@@ -14,7 +14,7 @@ export default ({ category, settings }) => {
       className={[classes.clickable, 'cc-pd-header'].join(' ')}
       onClick={() => {
         category.collapsed = !collapsed;
-        settings.set(`categories[${category.pos}]`, category);
+        setSetting(`categories[${category.pos}]`, category);
         updateDmList();
         setCollapsed(!collapsed);
       }}

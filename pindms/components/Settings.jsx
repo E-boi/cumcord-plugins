@@ -1,15 +1,15 @@
 import { Button } from '.';
+import { getSetting, setSetting } from '../utils';
 import TextInput from './TextInput';
 
-function Category({ category, settings, onDelete }) {
+function Category({ category, onDelete }) {
   const [name, setName] = React.useState(category.name);
-  console.log(name);
   return (
     <TextInput
       value={name}
       onChange={val => {
         category.name = val;
-        settings.set(`categories[${category.pos}]`, category);
+        setSetting(`categories[${category.pos}]`, category);
         setName(val);
       }}
     >
@@ -21,8 +21,8 @@ function Category({ category, settings, onDelete }) {
   );
 }
 
-export default ({ settings }) => {
-  const [categories, setCategories] = React.useState(settings.get('categories', []));
+export default () => {
+  const [categories, setCategories] = React.useState(getSetting('categories', []));
 
   if (!categories) return null;
   return (
@@ -30,11 +30,10 @@ export default ({ settings }) => {
       {categories.map(category => (
         <Category
           category={category}
-          settings={settings}
           onDelete={idx => {
             categories.splice(idx, 1);
             categories.forEach((e, idx1) => (e.pos = idx1));
-            settings.set('categories', categories);
+            setSetting('categories', categories);
             setCategories(null);
             setTimeout(() => setCategories(categories));
           }}
@@ -43,7 +42,7 @@ export default ({ settings }) => {
       <Button
         onClick={() => {
           categories.push({ name: 'New Category', dms: [], pos: categories.length, collapsed: false });
-          settings.set('categories', categories);
+          setSetting('categories', categories);
           setCategories(null);
           setTimeout(() => setCategories(categories));
         }}
