@@ -1,0 +1,7 @@
+{
+  "name": "User Volume Booster",
+  "description": "Allows you to set a user's volume above 200%",
+  "author": "ugly-patootie#0611",
+  "file": "index.js",
+  "license": "MIT"
+}

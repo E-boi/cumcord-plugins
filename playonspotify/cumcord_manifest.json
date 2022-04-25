@@ -1,0 +1,7 @@
+{
+  "name": "Play on Spotify",
+  "description": "A port of play on spotify (powercord plugin)",
+  "author": "ugly-patootie#0611",
+  "file": "index.js",
+  "license": "MIT"
+}
