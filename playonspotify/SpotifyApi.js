@@ -7,7 +7,7 @@ const getAccessToken = () => getActiveSocketAndDevice()?.socket?.accessToken;
 
 export const addToQueue = ({ title, uri }, toast) => {
   if (!getAccessToken()) return;
-  fetch(`${URL}/queue?uri=${uri}`, { headers: { authorization: `Bearer ${getAccessToken()}` }, method: 'POST' }).then(
+  return fetch(`${URL}/queue?uri=${uri}`, { headers: { authorization: `Bearer ${getAccessToken()}` }, method: 'POST' }).then(
     res => res.ok && toast && showToast({ title: `Queued: ${title}` })
   );
 };
