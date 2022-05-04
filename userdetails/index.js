@@ -6,7 +6,7 @@ import Settings from './settings';
 import css from './style.css';
 
 const injections = [];
-const Text = findByDisplayName('Text');
+const Text = findByDisplayName('Text') || findByDisplayName('LegacyText');
 const Popout = findByProps('UserPopoutInfo');
 const { getMember } = findByProps('getMember');
 const { getGuildId } = findByProps('getLastSelectedGuildId');
@@ -40,7 +40,6 @@ export default {
     );
 
     const UserProfileModalHeader = await findAsync(() => findByDisplayName('UserProfileModalHeader', false));
-    console.log(UserProfileModalHeader, unloaded);
     if (unloaded) return;
 
     injections.push(
