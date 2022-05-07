@@ -16,5 +16,5 @@ export const Modal = webpack.findByProps('ModalRoot');
 export const FormTitle = webpack.findByDisplayName('FormTitle');
 export const Card = webpack.findByDisplayName('Card');
 export const Button = webpack.find(m => m.DropdownSizes);
-export const Text = webpack.findByDisplayName('Text');
+export const Text = webpack.findByDisplayName('Text') || webpack.findByDisplayName('LegacyText');
 export const Pencil = webpack.findByDisplayName('Pencil');

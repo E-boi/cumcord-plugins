@@ -4,7 +4,7 @@ import { React } from '@cumcord/modules/common';
 const components = {
 	Input: webpack.findByDisplayName('TextInput'),
 	SwitchItem: webpack.findByDisplayName('SwitchItem'),
-	Text: webpack.findByDisplayName('Text'),
+	Text: webpack.findByDisplayName('Text') || webpack.findByDisplayName('LegacyText'),
 	UserPopout: webpack.findByDisplayName('UserProfileActivity'),
 	FormItem: webpack.findByDisplayName('FormItem'),
 	ArrowDown: webpack.findByDisplayName('ArrowDropDown'),
