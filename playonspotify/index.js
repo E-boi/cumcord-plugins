@@ -10,7 +10,7 @@ const MiniPopover = findByDisplayName('MiniPopover', false);
 export default {
   onLoad() {
     injection = after('default', MiniPopover, (_, res) => {
-      const { message } = findInReactTree(res, c => c?.message);
+      const message = findInReactTree(res, c => c?.message)?.message;
       if (!message) return res;
 
       const embed = message.embeds.find(e => e.provider?.name === 'Spotify');
