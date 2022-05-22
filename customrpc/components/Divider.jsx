@@ -1,8 +1,7 @@
 import { webpack } from '@cumcord/modules';
 
-const classes = {
-  dividerDefault: webpack.findByProps('dividerDefault').dividerDefault,
-  divider: webpack.find(m => m.divider?.includes('divider-_')).divider,
-};
+const divider = webpack.findByProps('dividerDefault').dividerDefault;
 
-export default ({ className }) => <div className={`${classes.divider} ${classes.dividerDefault} ${className}`} />;
+const FormDivider = webpack.findByDisplayName('FormDivider');
+
+export default ({ className }) => <FormDivider className={[divider, className].join(' ')} />;
