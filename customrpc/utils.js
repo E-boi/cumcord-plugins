@@ -1,8 +1,25 @@
 import { FluxDispatcher, constants } from '@cumcord/modules/common';
 import { findByProps } from '@cumcord/modules/webpack';
+import { persist } from '@cumcord/pluginData';
 
 const { ActionTypes } = constants;
 const { getAssetIds, getAssets: getAssetss } = findByProps('getAssetIds');
+
+export function convertSettings() {
+  if (persist.ghost.rpcs) return;
+  const settings = Object.entries(persist.ghost);
+  const rpcs = settings
+    .map(r => {
+      if (r[0] === 'selected') return;
+      const rpc = r[1];
+      return rpc;
+    })
+    .filter(e => e);
+  const selected = settings.findIndex(r => r[0] === settings[3][1]);
+  persist.store.rpcs = rpcs;
+  persist.store.selected = selected;
+  persist.store.disabled = persist.ghost.disable;
+}
 
 export async function setRPC(activity) {
   const rpc = activity && (await formatRPC(activity));
