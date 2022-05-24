@@ -30,6 +30,9 @@
 	line-height: 0;
 }
 
+.blur [class*='originalLink-'] {
+  z-index: 0;
+}
 .blur .embedWrapper-1MtIDg img,
 .blur .embedWrapper-1MtIDg video {
 	transition: var(--blur-timing) !important;

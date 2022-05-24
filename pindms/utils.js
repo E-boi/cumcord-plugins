@@ -105,12 +105,11 @@ function setupContextMenu(channel, rawItems) {
 
 function setSetting(setting, value) {
   // same reason before but to set
-  persist.store = window._.set(persist.ghost, setting, value);
+  window._.set(persist.store, setting, value);
 }
 
 function getSetting(setting, defaultValue) {
   // makes it easy to get settings like "catgory[idx].dms"
-  console.log(persist);
   return window._.get(persist.ghost, setting) ?? defaultValue;
 }
 
