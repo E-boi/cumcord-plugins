@@ -6,12 +6,16 @@ const { ActionTypes } = constants;
 const { getAssetIds, getAssets: getAssetss } = findByProps('getAssetIds');
 
 export function convertSettings() {
-  if (persist.ghost.rpcs) return;
+  if (persist.ghost.converted) return;
   const settings = Object.entries(persist.ghost);
   const rpcs = settings
     .map(r => {
       if (r[0] === 'selected' || r[0] === 'disable') return;
       const rpc = r[1];
+
+      rpc.buttons = [];
+      if (rpc.button1) rpc.buttons.push(rpc.button1);
+      if (rpc.button2) rpc.buttons.push(rpc.button2);
       return rpc;
     })
     .filter(e => e);
@@ -22,6 +26,7 @@ export function convertSettings() {
   persist.store.rpcs = rpcs;
   persist.store.selected = selected;
   persist.store.disabled = persist.ghost.disable;
+  persist.store.converted = true;
 }
 
 export async function setRPC(activity) {
