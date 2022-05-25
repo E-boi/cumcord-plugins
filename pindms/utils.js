@@ -104,8 +104,10 @@ function setupContextMenu(channel, rawItems) {
 }
 
 function setSetting(setting, value) {
-  // same reason before but to set
-  window._.set(persist.store, setting, value);
+  // uhhhhh whatever it works
+  const currentSetting = window._.get(persist.ghost, setting);
+
+  if (!currentSetting) persist.store[setting] = value;
 }
 
 function getSetting(setting, defaultValue) {
