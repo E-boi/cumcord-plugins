@@ -1,0 +1,22 @@
+.cccumpo [class*='horizontal-'] > * {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.cccumpo [class*='slider-'] {
+  flex-grow: 1;
+  margin-right: 10px;
+  margin-left: 0px;
+}
+
+.cccumpo [class*='select-'] {
+  flex-grow: 1;
+  margin-right: 10px;
+  margin-left: 0px;
+}
+
+.cccumpo [class*='inputWrapper-'] {
+  flex-grow: 1;
+  margin-right: 10px;
+  margin-left: 0px;
+}
