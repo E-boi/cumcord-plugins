@@ -10,12 +10,15 @@ export function convertSettings() {
   const settings = Object.entries(persist.ghost);
   const rpcs = settings
     .map(r => {
-      if (r[0] === 'selected') return;
+      if (r[0] === 'selected' || r[0] === 'disable') return;
       const rpc = r[1];
       return rpc;
     })
     .filter(e => e);
   const selected = settings.findIndex(r => r[0] === settings[3][1]);
+  persist.store.rpc1 = null;
+  persist.store.rpc2 = null;
+  persist.store.rpc3 = null;
   persist.store.rpcs = rpcs;
   persist.store.selected = selected;
   persist.store.disabled = persist.ghost.disable;
