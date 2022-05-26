@@ -12,7 +12,7 @@ function setDefaults() {
 }
 
 export default () => {
-  if (!persist.ghost.converted && persist.ghost.rpc1) convertSettings();
+  if (!persist.ghost.converte && (persist.ghost.rpc1 || persist.ghost.rpcs)) convertSettings();
   else if (!persist.ghost.rpcs) setDefaults();
 
   return {

@@ -6,27 +6,27 @@ const { ActionTypes } = constants;
 const { getAssetIds, getAssets: getAssetss } = findByProps('getAssetIds');
 
 export function convertSettings() {
-  if (persist.ghost.converted) return;
-  const settings = Object.entries(persist.ghost);
+  if (persist.ghost.converte) return;
+  const settings = persist.ghost.rpc1 ? Object.entries(persist.ghost) : Object.entries(persist.ghost.rpcs);
   const rpcs = settings
     .map(r => {
-      if (r[0] === 'selected' || r[0] === 'disable') return;
+      if (typeof r[1] !== 'object') return;
       const rpc = r[1];
 
       rpc.buttons = [];
-      if (rpc.button1) rpc.buttons.push(rpc.button1);
-      if (rpc.button2) rpc.buttons.push(rpc.button2);
+      rpc.buttons.push(rpc.button1 || defaults.buttons[0]);
+      rpc.buttons.push(rpc.button2 || defaults.buttons[1]);
       return rpc;
     })
     .filter(e => e);
-  const selected = settings.findIndex(r => r[0] === settings[3][1]);
+  const selected = typeof persist.ghost.selected !== 'number' ? settings.findIndex(r => r[0] === persist.ghost.selected) : persist.ghost.selected;
   persist.store.rpc1 = null;
   persist.store.rpc2 = null;
   persist.store.rpc3 = null;
   persist.store.rpcs = rpcs;
   persist.store.selected = selected;
   persist.store.disabled = persist.ghost.disable;
-  persist.store.converted = true;
+  persist.store.converte = true;
 }
 
 export async function setRPC(activity) {
