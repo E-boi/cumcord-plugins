@@ -1,7 +1,7 @@
 import { webpack } from '@cumcord/modules';
 import Divider from './Divider';
 
-const Text = webpack.findByDisplayName('Text'),
+const Text = webpack.findByDisplayName('LegacyText'),
 	ArrowDown = webpack.findByDisplayName('ArrowDropDown'),
 	ArrowUp = webpack.findByDisplayName('ArrowDropUp');
 const classes = {
