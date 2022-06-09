@@ -11,14 +11,14 @@ const classes = {
 };
 let injection;
 let cssInject;
-const HeaderBarContainer = webpack.findByDisplayName('HeaderBarContainer');
+const HeaderBarContainer = webpack.findByDisplayName('HeaderBarContainer', false);
 
 export default ({ persist }) => {
   if (!persist.ghost.accounts) persist.store.accounts = [];
   return {
     onLoad() {
       cssInject = css();
-      injection = after('renderLoggedIn', HeaderBarContainer.prototype, (_, res) => {
+      injection = after('default', HeaderBarContainer, (_, res) => {
         const SwitchButton = React.createElement(
           Tooltip,
           { text: 'Switch Accounts', position: 'bottom' },
@@ -29,11 +29,8 @@ export default ({ persist }) => {
           )
         );
 
-        if (!res.props.toolbar) {
-          res.props.toolbar = SwitchButton;
-        } else {
-          res.props.toolbar.props.children.push(SwitchButton);
-        }
+        if (!res.props.children.props.toolbar) res.props.children.props.toolbar = [];
+        res.props.children.props.toolbar.push(SwitchButton);
         return res;
       });
     },
