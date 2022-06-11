@@ -1,0 +1,7 @@
+{
+  "name": "Channel Locker",
+  "description": "Lock channels you want to lurk in.",
+  "author": "ugly-patootie#0611",
+  "file": "index.jsx",
+  "license": "MIT"
+}
