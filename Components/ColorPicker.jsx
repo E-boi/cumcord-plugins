@@ -1,28 +1,26 @@
 import { constants, i18n } from '@cumcord/modules/common';
+import { findByProps } from '@cumcord/modules/webpack';
 import FormItem from './FormItem';
 import { CustomColorButton, CustomColorPicker, DColorPicker, DefaultColorButton, Popout, Tooltip } from './WPMODULES';
 
 export default function ColorPicker(props) {
-  console.log(props);
   if (!props.colors) props.colors = constants.ROLE_COLORS;
   if (typeof props.children !== 'string') throw new Error('Children has to be a string');
-  // const children = Array.isArray(props.children) && typeof props.children === 'object' ? props.children : [props.children];
-  // const title = typeof children === 'string' && children;
   const className = props.className ? `${props.className} cccumpo` : 'cccumpo';
+  props.customColor = props.customColor || props.value === props.defaultColor || props.colors.some(e => e === props.value) ? null : props.value;
   delete props.className;
-
   return (
     <FormItem title={props.children} divider={props.divider ?? true} className={className} note={props.note} required={props.required}>
       <DColorPicker {...props} renderDefaultButton={DefaultButton} renderCustomButton={e => <ColorButton {...e} onChange={props.onChange} />} />
-      {/* {!title && [...children]} */}
     </FormItem>
   );
 }
 
+ColorPicker.utils = findByProps('hex2int');
+
 function ColorButton(props) {
-  console.log(props);
   return (
-    <Popout renderPopout={() => <CustomColorPicker value={props.value} onChange={props.onChange} />} position={props.pickerPosition || 'right'}>
+    <Popout renderPopout={() => <CustomColorPicker value={props.customColor} onChange={props.onChange} />} position={props.pickerPosition || 'right'}>
       {e => (
         <Tooltip text={i18n.Messages.CUSTOM_COLOR} position='bottom'>
           {t => (

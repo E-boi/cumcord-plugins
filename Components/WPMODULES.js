@@ -11,6 +11,7 @@ export const [
   { default: DColorPicker, DefaultColorButton, CustomColorButton, CustomColorPicker },
   Tooltip,
   Popout,
+  Button,
 ] = batchFind(e => {
   e.findByDisplayName('FormItem');
   e.findByDisplayName('FormText');
@@ -22,4 +23,5 @@ export const [
   e.find(m => m.default?.displayName === 'ColorPicker' && !m.default.defaultProps);
   e.findByDisplayName('Tooltip');
   e.findByDisplayName('Popout');
+  e.findByProps('Sizes', 'Colors', 'Looks', 'DropdownSizes');
 });

@@ -2,14 +2,14 @@ import FormItem from './FormItem';
 import { DTextInput, Flex } from './WPMODULES';
 
 export default function TextInput(props) {
-  const children = (Array.isArray(props.children) || typeof props.children === 'object') && [...props.children];
+  const children = !Array.isArray(props.children) && typeof props.children === 'object' ? [props.children] : props.children;
   const title = typeof props.children === 'string' && props.children;
   const className = props.className ? `${props.className} cccumpo` : 'cccumpo';
   delete props.children;
   delete props.className;
   return (
     <FormItem title={title || props.title} divider={props.divider ?? true} className={className} note={props.note} required={props.required}>
-      <Flex basis='auto' grow={1} shrink={1}>
+      <Flex basis='auto' grow={1} shrink={1} align={Flex.Align.CENTER}>
         <DTextInput {...props} />
         {!title && [...children]}
       </Flex>

@@ -2,7 +2,7 @@ import FormItem from './FormItem';
 import { Flex, Slider } from './WPMODULES';
 
 export default function SliderInput(props) {
-  const children = (Array.isArray(props.children) || typeof props.children === 'object') && [...props.children];
+  const children = !Array.isArray(props.children) && typeof props.children === 'object' ? [props.children] : props.children;
   const title = typeof props.children === 'string' && props.children;
   const className = props.className ? `${props.className} cccumpo` : 'cccumpo';
   delete props.children;
