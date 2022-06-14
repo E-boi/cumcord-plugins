@@ -46,19 +46,15 @@ async function formatRPC(activity) {
     application_id: activity.client_id,
     name: activity.name,
     details: activity.details,
-    state: activity.state,
+    state: activity.type !== 1 ? activity.state : null,
     assets: {
-      large_image: assets[0],
-      small_image: assets[1],
-      large_text: activity.large_text,
-      small_text: activity.small_text,
+      large_image: activity.type !== 1 ? assets[0] : null,
+      small_image: activity.type !== 1 ? assets[1] : null,
+      large_text: activity.type !== 1 ? activity.large_text : null,
+      small_text: activity.type !== 1 ? activity.small_text : null,
     },
     timestamps: activity.show_time && {
       start: Date.now(),
-    },
-    buttons: [],
-    metadata: {
-      button_uris: [],
     },
     type: activity.type,
     url: activity.url,
@@ -66,8 +62,10 @@ async function formatRPC(activity) {
 
   activity.buttons?.forEach(button => {
     if (button?.url && button?.label) {
+      if (!rpc.buttons) rpc.buttons = [];
+      if (!rpc.metadata) rpc.metadata = { button_urls: [] };
       rpc.buttons.push(button.label);
-      rpc.metadata.button_uris.push(button.url);
+      rpc.metadata.button_urls.push(button.url);
     }
   });
 
