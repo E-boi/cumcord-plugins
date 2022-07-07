@@ -31,7 +31,7 @@ export default {
         if (!channelId) return res;
         if (!res.props.children.props.toolbar) res.props.children.props.toolbar = [];
         res.props.children.props.toolbar.push(
-          <HeaderBar.default.Icon onClick={toggle} icon={() => <LockIcon />} tooltip='Toogle Global Lock' />,
+          <HeaderBar.default.Icon onClick={() => toggle()} icon={() => <LockIcon />} tooltip='Toogle Global Lock' />,
           <HeaderBar.default.Icon onClick={() => toggle(channelId)} icon={() => <ChannelText />} tooltip='Toogle Channel Lock' />
         );
         return res;
