@@ -13,7 +13,6 @@ const { openContextMenu } = findByProps('openContextMenu');
 const { lastMessageId } = findByProps('lastMessageId');
 
 export default function () {
-  const _this = this;
   this.injections.push(
     after('render', PrivateChannel.prototype, function (_, res) {
       const children = res.props.children({ role: 'listitem' });
@@ -39,9 +38,9 @@ export default function () {
   );
   this.injections.push(
     after('default', ConnectedPrivateChannelsList, (_, res) => {
-      const idList = [];
-      const props = findInReactTree(res, e => e?.selectedChannelId);
+      const props = findInReactTree(res, e => e?.privateChannelIds);
       if (!props) return res;
+      const idList = [];
       const categories = getSetting('categories', []);
 
       categories.forEach(cat => idList.push(...cat.dms));
