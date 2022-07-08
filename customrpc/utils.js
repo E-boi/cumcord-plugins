@@ -56,6 +56,11 @@ async function formatRPC(activity) {
     timestamps: activity.show_time && {
       start: Date.now(),
     },
+    party: activity.party &&
+      activity.party_size && {
+        size: [activity.party, activity.party_size],
+        id: 'cum',
+      },
     type: activity.type,
     url: activity.url,
   };

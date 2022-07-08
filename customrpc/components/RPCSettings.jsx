@@ -27,6 +27,7 @@ const AutoWrap = ({ children, grow, shrink, wrap }) => {
 export default ({ rpcName, transitionState, onClose }) => {
   const [openedB, setOpenB] = useState();
   const [openedI, setOpenI] = useState();
+  const [openedP, setOpenP] = useState();
   const [changes, setChanges] = useState();
   const [assets, setAssets] = useState();
   const [rpc, setRPC] = useState(Object.assign({}, persist.ghost.rpcs[rpcName]));
@@ -117,7 +118,7 @@ export default ({ rpcName, transitionState, onClose }) => {
                   Show Time
                 </SwitchItem>
 
-                <Category title='Images' opened={openedI} onChange={() => !setOpenI(!openedI) && setOpenB(false)}>
+                <Category title='Images' opened={openedI} onChange={() => !setOpenI(!openedI) && !setOpenP(false) && setOpenB(false)}>
                   <Flex wrap={Flex.Wrap.WRAP}>
                     <AutoWrap wrap grow={1} shrink={1}>
                       {assets && (
@@ -171,7 +172,7 @@ export default ({ rpcName, transitionState, onClose }) => {
                   </Flex>
                 </Category>
 
-                <Category title='Buttons' opened={openedB} onChange={() => !setOpenB(!openedB) && setOpenI(false)}>
+                <Category title='Buttons' opened={openedB} onChange={() => !setOpenB(!openedB) && !setOpenI(false) && setOpenP(false)}>
                   {rpc.buttons.map((button, idx) => (
                     <Flex wrap={Flex.Wrap.WRAP}>
                       <AutoWrap wrap grow={1} shrink={1}>
@@ -197,6 +198,35 @@ export default ({ rpcName, transitionState, onClose }) => {
                       </AutoWrap>
                     </Flex>
                   ))}
+                </Category>
+
+                <Category title='Party' opened={openedP} onChange={() => !setOpenP(!openedP) && !setOpenB(false) && setOpenI(false)}>
+                  <Flex wrap={Flex.Wrap.WRAP}>
+                    <AutoWrap wrap grow={1} shrink={1}>
+                      <TextInput
+                        value={rpc.party}
+                        onChange={val => {
+                          try {
+                            rpc.party = val ? parseInt(val) : undefined;
+                            update();
+                          } catch {}
+                        }}
+                      >
+                        Members in party
+                      </TextInput>
+                      <TextInput
+                        value={rpc.party_size}
+                        onChange={val => {
+                          try {
+                            rpc.party_size = val ? parseInt(val) : undefined;
+                            update();
+                          } catch {}
+                        }}
+                      >
+                        Size of the party
+                      </TextInput>
+                    </AutoWrap>
+                  </Flex>
                 </Category>
 
                 <Text className={`${classes.h5} ${classes.marginBottom8}`}>Your RPC:</Text>
