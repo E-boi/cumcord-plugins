@@ -19,7 +19,7 @@ jobs:
       - run: npm install --global sperm pnpm
 
       - name: Install deps
-        run: pnpm m i
+        run: pnpm i
 
         # Magic happens here:
         # - finds every folder in repo (which is why dist dir is hidden)
