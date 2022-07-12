@@ -1,14 +1,13 @@
 import { batchFind } from '@cumcord/modules/webpack';
 import { after } from '@cumcord/patcher';
 import { persist } from '@cumcord/pluginData';
-import Notice from './copmonents/Notice';
+import Notice from './components/Notice';
 
-const [ChannelTextArea, HeaderBar, LockIcon, ChannelText, classes] = batchFind(e => {
+const [ChannelTextArea, HeaderBar, LockIcon, ChannelText] = batchFind(e => {
   e.findByDispNameDeep('ChannelTextAreaContainer');
   e.findByDisplayName('HeaderBarContainer', false);
   e.findByDisplayName('LockClosed');
   e.findByDisplayName('ChannelText');
-  e.findByProps('iconWrapper', 'clickable');
 });
 
 const injections = [];
