@@ -7,7 +7,7 @@ import loadIcons from './loadIcons';
 
 let injection;
 let cssInject;
-const Popout = webpack.findByDisplayNameAll('UserPopoutBody', false)[1];
+const Popout = webpack.findByDisplayName('UserPopoutBody', false);
 
 export default () => {
   loadIcons();
@@ -17,7 +17,7 @@ export default () => {
       cssInject = css();
       injection = after('default', Popout, ([{ user }], res) => {
         if (!res) return res;
-        res.props.children.splice(2, 0, React.createElement(Connections, { user: user.id }));
+        res.props.children.splice(3, 0, React.createElement(Connections, { user: user.id }));
         return res;
       });
     },
