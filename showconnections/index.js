@@ -1,5 +1,5 @@
 import { webpack } from '@cumcord/modules';
-import { after, before, instead } from '@cumcord/patcher';
+import { after } from '@cumcord/patcher';
 import { React } from '@cumcord/modules/common';
 import Connections from './Components/Connections';
 import css from './style.css';

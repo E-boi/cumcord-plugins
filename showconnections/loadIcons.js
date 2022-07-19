@@ -8,7 +8,7 @@ export default function loadIcons() {
   if (findByProps('connectedAccount')) return;
   if (!getCurrentUser()) return setTimeout(loadIcons, 100);
   const e = () => {
-    setTimeout(closeUserProfileModal, 100);
+    setTimeout(() => closeUserProfileModal(), 100);
     FluxDispatcher.unsubscribe(constants.ActionTypes.USER_PROFILE_MODAL_OPEN, e);
   };
   FluxDispatcher.subscribe(constants.ActionTypes.USER_PROFILE_MODAL_OPEN, e);
