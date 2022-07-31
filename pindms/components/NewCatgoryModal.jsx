@@ -1,5 +1,6 @@
 import { Button, close, FormTitle, Modal } from '.';
-import { getSetting, setSetting, updateDmList } from '../utils';
+import { updateDmList } from '../utils';
+import { persist } from "@cumcord/pluginData";
 import TextInput from './TextInput';
 
 export default ({ transitionState, dmId }) => {
@@ -18,14 +19,14 @@ export default ({ transitionState, dmId }) => {
         <Button
           disabled={!name}
           onClick={() => {
-            const categories = getSetting('categories', []);
+            const categories = persist.ghost.categories ?? [];
             categories.push({
               name,
               dms: [dmId],
               pos: categories.length,
               collapsed: false,
             });
-            setSetting('categories', categories);
+            persist.store.categories = categories;
             close();
             updateDmList();
           }}

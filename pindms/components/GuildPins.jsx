@@ -1,7 +1,8 @@
 import { findByProps, findByDisplayName } from '@cumcord/modules/webpack';
 import { FluxDispatcher, constants } from '@cumcord/modules/common';
+import { persist } from "@cumcord/pluginData";
 import { Tooltip } from '.';
-import { getSetting, setupContextMenu } from '../utils';
+import { setupContextMenu } from '../utils';
 
 const { default: PrivateChannel } = findByProps('DirectMessage');
 const { getUser } = findByProps('getUser', 'findByTag');
@@ -14,10 +15,11 @@ const { getMentionCount } = findByProps('getMentionCount');
 const Pill = findByDisplayName('AnimatedHalfPill');
 
 export default () => {
-  const [ids, setIds] = React.useState(getSetting('guildlist', []));
+  const [ids, setIds] = React.useState(persist.ghost.guildlist ?? []);
 
   React.useEffect(() => {
-    const update = ({ removeAll }) => setIds(removeAll ? [] : [...getSetting('guildlist', [])]);
+    const guildlist = persist.ghost.guildlist ?? [];
+    const update = ({ removeAll }) => setIds(removeAll ? [] : [...guildlist]);
     FluxDispatcher.subscribe('PDM_GUILDLIST_ADD', update);
     FluxDispatcher.subscribe('PDM_GUILDLIST_REMOVE', update);
 
