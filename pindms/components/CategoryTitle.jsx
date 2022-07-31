@@ -1,6 +1,7 @@
 import { findByProps } from '@cumcord/modules/webpack';
+import { persist } from "@cumcord/pluginData";
 import { Arrow, Clickable, ListSectionItem } from '.';
-import { setSetting, updateDmList } from '../utils';
+import { updateDmList } from '../utils';
 
 const classes = { ...findByProps('privateChannelsHeaderContainer'), ...findByProps('containerDefault', 'name') };
 
@@ -14,7 +15,7 @@ export default ({ category }) => {
       className={[classes.clickable, 'cc-pd-header'].join(' ')}
       onClick={() => {
         category.collapsed = !collapsed;
-        setSetting(`categories[${category.pos}]`, category);
+        persist.store.categories[category.pos] = category;
         updateDmList();
         setCollapsed(!collapsed);
       }}

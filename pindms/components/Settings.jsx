@@ -1,5 +1,5 @@
+import { persist } from "@cumcord/pluginData";
 import { Button } from '.';
-import { getSetting, setSetting } from '../utils';
 import TextInput from './TextInput';
 
 function Category({ category, onDelete }) {
@@ -9,7 +9,7 @@ function Category({ category, onDelete }) {
       value={name}
       onChange={val => {
         category.name = val;
-        setSetting(`categories[${category.pos}]`, category);
+        persist.store.categories[category.pos] = category;
         setName(val);
       }}
     >
@@ -22,7 +22,7 @@ function Category({ category, onDelete }) {
 }
 
 export default () => {
-  const [categories, setCategories] = React.useState(getSetting('categories', []));
+  const [categories, setCategories] = React.useState(persist.ghost.categories ?? []);
 
   if (!categories) return null;
   return (
@@ -33,7 +33,7 @@ export default () => {
           onDelete={idx => {
             categories.splice(idx, 1);
             categories.forEach((e, idx1) => (e.pos = idx1));
-            setSetting('categories', categories);
+            persist.store.categories = categories;
             setCategories(null);
             setTimeout(() => setCategories(categories));
           }}
@@ -42,7 +42,7 @@ export default () => {
       <Button
         onClick={() => {
           categories.push({ name: 'New Category', dms: [], pos: categories.length, collapsed: false });
-          setSetting('categories', categories);
+          persist.store.categories = categories;
           setCategories(null);
           setTimeout(() => setCategories(categories));
         }}
