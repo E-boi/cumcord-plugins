@@ -1,8 +1,7 @@
-import { FluxDispatcher, constants } from '@cumcord/modules/common';
+import { FluxDispatcher } from '@cumcord/modules/common';
 import { findByProps } from '@cumcord/modules/webpack';
 import { persist } from '@cumcord/pluginData';
 
-const { ActionTypes } = constants;
 const { getAssetIds, getAssets: getAssetss } = findByProps('getAssetIds');
 
 export function convertSettings() {
@@ -32,7 +31,7 @@ export function convertSettings() {
 export async function setRPC(activity) {
   const rpc = activity && (await formatRPC(activity));
   FluxDispatcher.dispatch({
-    type: ActionTypes.LOCAL_ACTIVITY_UPDATE,
+    type: 'LOCAL_ACTIVITY_UPDATE',
     socketId: 'cumcord-epic-sex',
     pid: 69,
     activity: rpc,
