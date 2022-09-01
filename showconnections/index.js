@@ -26,7 +26,6 @@ export default () => {
 
       injection.push(
         after('default', Skins, ([{ user }], res) => {
-          console.log(res);
           res?.props?.children?.unshift(React.createElement(Connections, { user: user.id, skin: true }));
           return res;
         })
