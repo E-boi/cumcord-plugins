@@ -5,25 +5,35 @@ import Connections from './Components/Connections';
 import css from './style.css';
 import loadIcons from './loadIcons';
 
-let injection;
-let cssInject;
+const injection = [];
 const Popout = webpack.findByDisplayName('UserPopoutBody', false);
+const Skins = webpack.findByDisplayName('NoteSection', false);
 
 export default () => {
   loadIcons();
 
   return {
     onLoad() {
-      cssInject = css();
-      injection = after('default', Popout, ([{ user }], res) => {
-        if (!res) return res;
-        res.props.children.splice(3, 0, React.createElement(Connections, { user: user.id }));
-        return res;
-      });
+      injection.push(css());
+      injection.push(
+        after('default', Popout, ([{ user }], res) => {
+          if (!res) return res;
+          console.log(res);
+          res.props.children.splice(6, 0, React.createElement(Connections, { user: user.id }));
+          return res;
+        })
+      );
+
+      injection.push(
+        after('default', Skins, ([{ user }], res) => {
+          console.log(res);
+          res?.props?.children?.unshift(React.createElement(Connections, { user: user.id, skin: true }));
+          return res;
+        })
+      );
     },
     onUnload() {
-      injection?.();
-      cssInject?.();
+      injection.forEach(i => i?.());
     },
   };
 };
