@@ -36,10 +36,6 @@ export default {
       })
     );
 
-    const UserProfileModalHeader = await findAsync(() => findByDisplayName('UserProfileModalHeader', false));
-    if (unloaded) return;
-    console.log(ProfileSkins);
-
     injections.push(
       after('default', ProfileSkins, ([{ user }], res) => {
         const member = getMember(getGuildId(), user.id);
@@ -55,6 +51,9 @@ export default {
         return res;
       })
     );
+
+    const UserProfileModalHeader = await findAsync(() => findByDisplayName('UserProfileModalHeader', false));
+    if (unloaded) return;
 
     injections.push(
       after('default', UserProfileModalHeader, ([{ user }], res) => {
