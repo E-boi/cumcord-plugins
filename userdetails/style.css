@@ -1,3 +1,8 @@
 .createdAt-text {
   padding: 0 0 16px 16px;
+  user-select: text;
+}
+
+.createdAt-text-skin {
+  user-select: text;
 }

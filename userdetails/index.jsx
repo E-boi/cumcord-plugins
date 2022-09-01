@@ -4,10 +4,12 @@ import { React, i18n } from '@cumcord/modules/common';
 import { persist } from '@cumcord/pluginData';
 import Settings from './settings';
 import css from './style.css';
+import { findInReactTree } from '@cumcord/utils';
 
 const injections = [];
 const Text = findByDisplayName('Text') || findByDisplayName('LegacyText');
 const Popout = findByProps('UserPopoutInfo');
+const ProfileSkins = findByDisplayName('UsernameSection', false);
 const { getMember } = findByProps('getMember');
 const { getGuildId } = findByProps('getLastSelectedGuildId');
 let unloaded = false;
@@ -20,20 +22,15 @@ export default {
     injections.push(
       after('UserPopoutInfo', Popout, ([{ user }], res) => {
         const member = getMember(getGuildId(), user.id);
-        if (!member) {
-          const createdAt = dateToString(user.createdAt);
-          res.props.children.splice(2, 0, React.createElement(Text, null, `Created on ${createdAt}`));
-          return res;
-        }
-        const joinedAt = dateToString(new Date(member.joinedAt));
+        const joinedAt = member && dateToString(new Date(member.joinedAt));
         const createdAt = dateToString(user.createdAt);
         res.props.children.splice(
           2,
           0,
-          React.createElement('div', null, [
-            React.createElement(Text, null, `Created on ${createdAt}`),
-            React.createElement(Text, null, `Joined on ${joinedAt}`),
-          ])
+          <div>
+            <Text className='createdAt-text-skin'>Created on {createdAt}</Text>
+            {joinedAt && <Text className='createdAt-text-skin'>Joined on {joinedAt}</Text>}
+          </div>
         );
         return res;
       })
@@ -41,11 +38,28 @@ export default {
 
     const UserProfileModalHeader = await findAsync(() => findByDisplayName('UserProfileModalHeader', false));
     if (unloaded) return;
+    console.log(ProfileSkins);
+
+    injections.push(
+      after('default', ProfileSkins, ([{ user }], res) => {
+        const member = getMember(getGuildId(), user.id);
+        const joinedAt = member && dateToString(new Date(member.joinedAt));
+        const createdAt = dateToString(user.createdAt);
+        const username = findInReactTree(res, r => r?.copyValue);
+        username?.children?.props?.children?.push?.(
+          <div>
+            <Text className='createdAt-text-skin'>Created on {createdAt}</Text>
+            {joinedAt && <Text className='createdAt-text-skin'>Joined on {joinedAt}</Text>}
+          </div>
+        );
+        return res;
+      })
+    );
 
     injections.push(
       after('default', UserProfileModalHeader, ([{ user }], res) => {
         const createdAt = dateToString(user.createdAt);
-        res.props.children.splice(3, 0, React.createElement(Text, { className: 'createdAt-text' }, `Created on ${createdAt}`));
+        res.props.children.splice(3, 0, <Text className='createdAt-text'>Created on {createdAt}</Text>);
         return res;
       })
     );
