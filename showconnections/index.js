@@ -18,7 +18,6 @@ export default () => {
       injection.push(
         after('default', Popout, ([{ user }], res) => {
           if (!res) return res;
-          console.log(res);
           res.props.children.splice(6, 0, React.createElement(Connections, { user: user.id }));
           return res;
         })
