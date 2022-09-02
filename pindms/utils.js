@@ -1,51 +1,49 @@
-import { React, FluxDispatcher } from "@cumcord/modules/common";
-import { findByProps } from "@cumcord/modules/webpack";
-import { persist } from "@cumcord/pluginData";
-import { open } from "./components";
-import ContextMenu from "./components/ContextMenu";
-import NewCatgoryModal from "./components/NewCatgoryModal";
+import { React, FluxDispatcher } from '@cumcord/modules/common';
+import { findByProps } from '@cumcord/modules/webpack';
+import { persist } from '@cumcord/pluginData';
+import { open } from './components';
+import ContextMenu from './components/ContextMenu';
+import NewCatgoryModal from './components/NewCatgoryModal';
 
-const { scroller } = findByProps("privateChannelsHeaderContainer");
+const { scroller } = findByProps('privateChannelsHeaderContainer');
 
 function updateDmList() {
   const el = document.getElementsByClassName(scroller)[0];
   if (!el) return;
-  el.dispatchEvent(new Event("focusin"));
+  el.dispatchEvent(new Event('focusin'));
 
   setTimeout(() => {
-    el.dispatchEvent(new Event("focusout"));
+    el.dispatchEvent(new Event('focusout'));
   }, 10);
 }
 
 function setupContextMenu(channel, rawItems) {
   let items = [];
-  const category = (persist.ghost.categories ?? []).find((category) =>
-    category.dms.includes(channel.id)
-  );
+  const category = (persist.ghost.categories ?? []).find(category => category.dms.includes(channel.id));
   const isInGuildList = (persist.ghost.guildlist ?? []).includes(channel.id);
 
   if (!category)
     items.push({
-      type: "item",
-      id: "catgory-submenu",
-      label: "Pin to Channel List",
+      type: 'item',
+      id: 'catgory-submenu',
+      label: 'Pin to Channel List',
       items() {
         const items1 = [
           {
-            type: "item",
-            id: "create-new-catgory",
-            color: "colorBrand",
-            label: "Add to new catgory",
+            type: 'item',
+            id: 'create-new-catgory',
+            color: 'colorBrand',
+            label: 'Add to new catgory',
             action() {
               open(React.createElement(NewCatgoryModal, { dmId: channel.id }));
             },
           },
-          { type: "separator" },
+          { type: 'separator' },
         ];
 
-        (persist.ghost.categories ?? []).forEach((category1) =>
+        (persist.ghost.categories ?? []).forEach(category1 =>
           items1.push({
-            type: "item",
+            type: 'item',
             id: `add-to-category-${category1.name}`,
             label: category1.name,
             action() {
@@ -61,12 +59,12 @@ function setupContextMenu(channel, rawItems) {
     });
   else
     items.push({
-      type: "item",
-      id: "remove-from-category",
-      color: "colorDanger",
+      type: 'item',
+      id: 'remove-from-category',
+      color: 'colorDanger',
       label: `Remove from ${category.name}`,
       action() {
-        category.dms = category.dms.filter((id) => id !== channel.id);
+        category.dms = category.dms.filter(id => id !== channel.id);
         persist.store.categories[category.pos] = category;
         updateDmList();
       },
@@ -74,29 +72,27 @@ function setupContextMenu(channel, rawItems) {
 
   if (!isInGuildList)
     items.push({
-      type: "item",
-      id: "add-to-list",
-      label: "Pin to Server List",
+      type: 'item',
+      id: 'add-to-list',
+      label: 'Pin to Server List',
       action: () => {
         const updatedList = persist.ghost.guildlist ?? [];
         updatedList.push(channel.id);
         persist.store.guildlist = updatedList;
-        FluxDispatcher.dirtyDispatch({ type: "PDM_GUILDLIST_ADD" });
+        FluxDispatcher.dispatch({ type: 'PDM_GUILDLIST_ADD' });
       },
     });
   else
     items.push({
-      type: "item",
-      id: "remove-from-list",
-      label: "Unpin from Server List",
-      color: "colorDanger",
+      type: 'item',
+      id: 'remove-from-list',
+      label: 'Unpin from Server List',
+      color: 'colorDanger',
       action: () => {
-        const updatedList = (persist.ghost.guildlist ?? []).filter(
-          (id) => id !== channel.id
-        );
+        const updatedList = (persist.ghost.guildlist ?? []).filter(id => id !== channel.id);
 
         persist.store.guildlist = updatedList;
-        FluxDispatcher.dirtyDispatch({ type: "PDM_GUILDLIST_REMOVE" });
+        FluxDispatcher.dispatch({ type: 'PDM_GUILDLIST_REMOVE' });
       },
     });
 
@@ -104,9 +100,9 @@ function setupContextMenu(channel, rawItems) {
     const oldItems = items;
     items = [
       {
-        type: "item",
-        label: "PinDMs",
-        id: "submenu",
+        type: 'item',
+        label: 'PinDMs',
+        id: 'submenu',
         items: () => [...oldItems],
       },
     ];

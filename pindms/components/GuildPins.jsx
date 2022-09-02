@@ -1,6 +1,6 @@
 import { findByProps, findByDisplayName } from '@cumcord/modules/webpack';
 import { FluxDispatcher, constants } from '@cumcord/modules/common';
-import { persist } from "@cumcord/pluginData";
+import { persist } from '@cumcord/pluginData';
 import { Tooltip } from '.';
 import { setupContextMenu } from '../utils';
 
@@ -18,8 +18,7 @@ export default () => {
   const [ids, setIds] = React.useState(persist.ghost.guildlist ?? []);
 
   React.useEffect(() => {
-    const guildlist = persist.ghost.guildlist ?? [];
-    const update = ({ removeAll }) => setIds(removeAll ? [] : [...guildlist]);
+    const update = ({ removeAll }) => setIds(removeAll ? [] : [...(persist.ghost.guildlist ?? [])]);
     FluxDispatcher.subscribe('PDM_GUILDLIST_ADD', update);
     FluxDispatcher.subscribe('PDM_GUILDLIST_REMOVE', update);
 
