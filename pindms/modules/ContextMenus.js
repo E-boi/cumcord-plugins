@@ -16,24 +16,27 @@ async function lazyPatchContextMenu(displayName, patch) {
 
         return config => {
           const menu = render(config);
-          after(
-            'type',
-            menu,
-            (_, r1) => {
-              if (r1.props.children.type)
-                after(
-                  'type',
-                  r1.props.children,
-                  (_, r2) => {
-                    if (r2.props.children.type.displayName === displayName) patch(r2.props.children);
-                    return r2;
-                  },
-                  true
-                );
-              return r1;
-            },
-            true
-          );
+          console.log(menu);
+          // inject on some menus or else you infinitly pacth the menu and crash (i think thats whats happens)
+          if (!menu.props.message && !menu.props.guild && !menu.props.guildId)
+            after(
+              'type',
+              menu,
+              (_, r1) => {
+                if (r1?.props?.children?.type)
+                  after(
+                    'type',
+                    r1.props.children,
+                    (_, r2) => {
+                      if (r2?.props?.children?.type?.displayName === displayName) patch(r2.props.children);
+                      return r2;
+                    },
+                    true
+                  );
+                return r1;
+              },
+              true
+            );
           return menu;
         };
       };
