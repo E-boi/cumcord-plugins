@@ -8,10 +8,10 @@ const classes = {
   ...Flex,
 };
 
-export default props => (
-  <FormItem title={props.title} required={props.required} className={[classes.marginBottom20, props.className].join(' ')}>
-    {props.children}
-    {props.note && <FormText className={`${classes.description} ${classes.marginTop8}`}>{props.note}</FormText>}
-    {props.divider && <Divider className={[classes.marginTop20].join(' ')} />}
+export default ({ title, required, className, note, divider = true, children } = {}) => (
+  <FormItem title={title} required={required} className={[classes.marginBottom20, className].join(' ')}>
+    {children}
+    {note && <FormText className={`${classes.description} ${classes.marginTop8}`}>{note}</FormText>}
+    {divider && <Divider className={[classes.marginTop20].join(' ')} />}
   </FormItem>
 );

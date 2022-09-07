@@ -6,11 +6,10 @@ import { CustomColorButton, CustomColorPicker, DColorPicker, DefaultColorButton,
 export default function ColorPicker(props) {
   if (!props.colors) props.colors = constants.ROLE_COLORS;
   if (typeof props.children !== 'string') throw new Error('Children has to be a string');
-  const className = props.className ? `${props.className} cccumpo` : 'cccumpo';
+
   props.customColor = props.customColor || props.value === props.defaultColor || props.colors.some(e => e === props.value) ? null : props.value;
-  delete props.className;
   return (
-    <FormItem title={props.children} divider={props.divider ?? true} className={className} note={props.note} required={props.required}>
+    <FormItem title={props.children} note={props.note} required={props.required}>
       <DColorPicker {...props} renderDefaultButton={DefaultButton} renderCustomButton={e => <ColorButton {...e} onChange={props.onChange} />} />
     </FormItem>
   );
@@ -20,7 +19,10 @@ ColorPicker.utils = findByProps('hex2int');
 
 function ColorButton(props) {
   return (
-    <Popout renderPopout={() => <CustomColorPicker value={props.customColor} onChange={props.onChange} />} position={props.pickerPosition || 'right'}>
+    <Popout
+      renderPopout={() => !props.disabled && <CustomColorPicker value={props.customColor} onChange={props.onChange} />}
+      position={props.pickerPosition || 'right'}
+    >
       {e => (
         <Tooltip text={i18n.Messages.CUSTOM_COLOR} position='bottom'>
           {t => (

@@ -1,13 +1,14 @@
+import { findByDisplayName } from '@cumcord/modules/webpack';
 import FormItem from './FormItem';
-import { Slider } from './WPMODULES';
 
-export default function SliderInput(props) {
+const RadioGroup = findByDisplayName('RadioGroup');
+
+export default props => {
   const title = props.children;
-  const className = props.className;
   delete props.children;
   return (
     <FormItem title={title} note={props.note} required={props.required}>
-      <Slider {...props} />
+      <RadioGroup {...{ ...props }} />
     </FormItem>
   );
-}
+};
