@@ -50,7 +50,7 @@ export default () => {
           note='The maximum amount of users to display on the tooltip.'
           stickToMarkers
           initialValue={persist.ghost.maxTypingUsers || 3}
-          defaultValue={persist.ghost.maxTypingUsers || 3}
+          defaultValue={3}
           markers={[3, 4, 5, 6, 7, 8]}
           onMarkerRender={m => (m === 3 ? i18n.Messages.DEFAULT : i18n.Messages.NUM_USERS.format({ num: m }))}
           onValueChange={val => (persist.store.maxTypingUsers = val)}
