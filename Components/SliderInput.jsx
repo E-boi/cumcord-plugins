@@ -3,7 +3,6 @@ import { Slider } from './WPMODULES';
 
 export default function SliderInput(props) {
   const title = props.children;
-  const className = props.className;
   delete props.children;
   return (
     <FormItem title={title} note={props.note} required={props.required}>
