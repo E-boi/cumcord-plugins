@@ -23,7 +23,7 @@ export default function () {
       res.props.children.forEach((e, idx) => {
         if ((persist.ghost.guildlist ?? []).includes(e.key.replace('.$', ''))) {
           res.props.children.splice(idx, 1);
-          FluxDispatcher._dispatch({
+          FluxDispatcher.dispatch({
             type: `PDM_UPDATE`,
             id: e.key.replace('.$', ''),
           });
