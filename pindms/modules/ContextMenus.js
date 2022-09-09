@@ -16,7 +16,6 @@ async function lazyPatchContextMenu(displayName, patch) {
 
         return config => {
           const menu = render(config);
-          console.log(menu);
           // inject on some menus or else you infinitly pacth the menu and crash (i think thats whats happens)
           if (!menu.props.message && !menu.props.guild && !menu.props.guildId)
             after(
