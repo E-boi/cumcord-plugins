@@ -52,7 +52,6 @@ export default {
 
     injections.push(
       after('render', PrivateChannel.prototype, (_, res) => {
-        // };
         after('children', res.props, (_, r1) => <Popout res={r1} dm={true} channelId={res.props.id} />, true);
         return res;
       })
