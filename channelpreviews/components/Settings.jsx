@@ -44,7 +44,7 @@ export default () => {
         <SliderInput
           stickToMarkers
           disabled={(persist.ghost.displayOn || 'hover') !== 'hover'}
-          initialValue={persist.ghost.delay || 0.5}
+          initialValue={persist.ghost.delay || 0.3}
           defaultValue={0.3}
           markers={[0.2, 0.3, 0.4, 0.5, 0.7, 1, 1.5, 2, 2.5, 3, 3.5, 4]}
           onMarkerRender={m => m + 's'}

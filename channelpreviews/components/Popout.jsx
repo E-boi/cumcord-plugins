@@ -72,11 +72,11 @@ export default class extends React.PureComponent {
   handlePopoutOpen() {
     this.resetPopoutTimers();
     this.setState({ show: true });
-    darkenChat();
+    setTimeout(() => darkenChat(), this.state.show ? 300 : 0);
   }
 
   renderPopout(p) {
-    return <Messages popout={p} onClose={this.handlePopoutClose.bind(this)} channel={this.channel} />;
+    return <Messages popout={p} onMouseEnter={this.handlePopoutOpen} onClose={this.handlePopoutClose.bind(this)} channel={this.channel} />;
   }
 
   resetPopoutTimers() {
@@ -89,8 +89,8 @@ export default class extends React.PureComponent {
       this.props.res.props.onMouseEnter = this.handleMouseEnter;
       this.props.res.props.onMouseDown = null;
     } else {
-      this.props.res.props.onMouseDown = e => e.button === 1 && this.handlePopoutOpen(e);
-      this.props.res.props.onMouseEnter = null;
+      this.props.res.props.onMouseDown = e => e.button === 1 && this.handlePopoutOpen();
+      this.props.res.props.onMouseEnter = () => this.state.show && this.handlePopoutOpen();
     }
     this.props.res.props.onMouseLeave = this.handleMouseLeave;
 

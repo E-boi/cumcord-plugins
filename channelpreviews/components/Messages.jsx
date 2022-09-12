@@ -156,7 +156,11 @@ export default class Messages extends React.PureComponent {
         : DEFAULT_COZY_SPACING;
 
     return (
-      <div className={['cc-ChannelPreview', `group-spacing-${groupSpacing}`, scroller].join(' ')} ref={this.ref}>
+      <div
+        onMouseEnter={this.props.onMouseEnter}
+        className={['cc-ChannelPreview', `group-spacing-${groupSpacing}`, scroller].join(' ')}
+        ref={this.ref}
+      >
         {!this.state.messages ? (
           <EmptyState>
             <EmptyStateText note='This channel has no messages' />
