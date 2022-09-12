@@ -5,14 +5,16 @@ import Popout, { undarkenChat } from './components/Popout';
 import Settings from './components/Settings';
 import css from './style.css';
 
-const [TextChannel, ChannelItem] = batchFind(f => {
+const [TextChannel, ChannelItem, PrivateChannel] = batchFind(f => {
   f.findByDisplayName('ConnectedTextChannel', false);
   f.findByDisplayName('ChannelItem', false);
+  f.findByDisplayName('PrivateChannel');
 });
 const injections = [];
 
 const moreCss = `
-.${findByProps('chat').chat} {
+.${findByProps('chat').chat},
+.${findByProps('tabBody').container} {
   --darken-opacity: 1;
   opacity: var(--darken-opacity);
   transition: 0.3s opacity;
@@ -44,6 +46,14 @@ export default {
           const clickable = getClickable(res);
           if (clickable?.ref?.current) clickable.ref.current.onauxclick = e => e.preventDefault();
         }
+        return res;
+      })
+    );
+
+    injections.push(
+      after('render', PrivateChannel.prototype, (_, res) => {
+        // };
+        after('children', res.props, (_, r1) => <Popout res={r1} dm={true} channelId={res.props.id} />, true);
         return res;
       })
     );

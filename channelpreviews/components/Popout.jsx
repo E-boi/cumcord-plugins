@@ -4,9 +4,10 @@ import Messages from './Messages';
 import { persist } from '@cumcord/pluginData';
 import { Events } from '@cumcord/modules/internal/nests';
 
-const [DPopout, { chat }, { getChannel }] = batchFind(f => {
+const [DPopout, { chat }, { container }, { getChannel }] = batchFind(f => {
   f.findByDisplayName('Popout');
   f.findByProps('chat');
+  f.findByProps('tabBody');
   f.findByProps('getDMFromUserId');
 });
 
@@ -71,12 +72,15 @@ export default class extends React.PureComponent {
 
   handlePopoutOpen() {
     this.resetPopoutTimers();
+    if (this.channel.id === channels.getChannelId()) return;
     this.setState({ show: true });
     setTimeout(() => darkenChat(), this.state.show ? 300 : 0);
   }
 
   renderPopout(p) {
-    return <Messages popout={p} onMouseEnter={this.handlePopoutOpen} onClose={this.handlePopoutClose.bind(this)} channel={this.channel} />;
+    return (
+      <Messages popout={p} dm={this.props.dm} onMouseEnter={this.handlePopoutOpen} onMouseLeave={this.handleMouseLeave} channel={this.channel} />
+    );
   }
 
   resetPopoutTimers() {
@@ -88,9 +92,17 @@ export default class extends React.PureComponent {
     if ((persist.ghost.displayOn || 'hover') === 'hover') {
       this.props.res.props.onMouseEnter = this.handleMouseEnter;
       this.props.res.props.onMouseDown = null;
+      if (this.props.dm)
+        setTimeout(() => {
+          if (this.props.res.ref.current) this.props.res.ref.current.onauxclick = null;
+        });
     } else {
       this.props.res.props.onMouseDown = e => e.button === 1 && this.handlePopoutOpen();
       this.props.res.props.onMouseEnter = () => this.state.show && this.handlePopoutOpen();
+      if (this.props.dm)
+        setTimeout(() => {
+          if (this.props.res.ref.current) this.props.res.ref.current.onauxclick = e => e.preventDefault();
+        });
     }
     this.props.res.props.onMouseLeave = this.handleMouseLeave;
 
@@ -106,7 +118,7 @@ export default class extends React.PureComponent {
         animation={DPopout.Animation.TRANSLATE}
       >
         {(_, l) => {
-          const e = this.props.item();
+          const e = this.props.item?.() || this.props.res;
           e.props.onClick = this.handlePopoutClose.bind(this);
           if (l.isShown) e.props.selected = true;
           return e;
@@ -118,8 +130,10 @@ export default class extends React.PureComponent {
 
 export function darkenChat() {
   document.querySelector(`.${chat}`)?.style.setProperty('--darken-opacity', new String(persist.ghost.opacity ?? 0.3));
+  document.querySelector(`.${container}`)?.style.setProperty('--darken-opacity', new String(persist.ghost.opacity ?? 0.3));
 }
 
 export function undarkenChat() {
   document.querySelector(`.${chat}`)?.removeAttribute('style');
+  document.querySelector(`.${container}`)?.removeAttribute('style');
 }

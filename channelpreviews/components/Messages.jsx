@@ -156,11 +156,7 @@ export default class Messages extends React.PureComponent {
         : DEFAULT_COZY_SPACING;
 
     return (
-      <div
-        onMouseEnter={this.props.onMouseEnter}
-        className={['cc-ChannelPreview', `group-spacing-${groupSpacing}`, scroller].join(' ')}
-        ref={this.ref}
-      >
+      <div className={['cc-ChannelPreview', `group-spacing-${groupSpacing}`, scroller].join(' ')} ref={this.ref}>
         {!this.state.messages ? (
           <EmptyState>
             <EmptyStateText note='This channel has no messages' />
@@ -192,8 +188,8 @@ export default class Messages extends React.PureComponent {
 
   render() {
     return (
-      <>
-        {(persist.ghost.tabs ?? true) && (
+      <div onMouseEnter={this.props.onMouseEnter} onMouseLeave={this.props.onMouseLeave}>
+        {(persist.ghost.tabs ?? true) && !this.props.dm && (
           <TabBar
             className={['cc-ChannelPreviewTabBar', tabBar].join(' ')}
             selectedItem={this.state.tab}
@@ -211,7 +207,7 @@ export default class Messages extends React.PureComponent {
         )}
 
         {this.renderContent()}
-      </>
+      </div>
     );
   }
 }
