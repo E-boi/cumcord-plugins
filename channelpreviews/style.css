@@ -1,0 +1,42 @@
+.cc-ChannelPreview {
+  margin-top: 5px;
+  min-height: 150px;
+  min-width: 300px;
+  height: var(--popout-height);
+  width: var(--popout-width);
+  background-color: var(--background-primary);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.cc-ChannelPreviewThreadPopout > [class*='popout'] {
+  margin-top: 42px;
+  left: 0px;
+}
+
+.cc-ChannelPreview li {
+  list-style-type: none;
+}
+
+.cc-ChannelPreview::before {
+  content: '';
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--background-primary), transparent);
+  z-index: 20;
+}
+
+.cc-ChannePreviewDivider {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cc-ChannelPreviewTyping > [class*='typing'] {
+  position: initial;
+}
