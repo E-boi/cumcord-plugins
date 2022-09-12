@@ -128,7 +128,11 @@ export default () => {
           Popout Width
         </SliderInput>
 
-        <SwitchItem value={persist.ghost.typingUsers ?? true} onChange={() => (persist.store.typingUsers = !persist.ghost.typingUsers)}>
+        <SwitchItem
+          note="Shows who's typing in previewed channel."
+          value={persist.ghost.typingUsers ?? true}
+          onChange={() => (persist.store.typingUsers = !persist.ghost.typingUsers)}
+        >
           Show Typing Users
         </SwitchItem>
 

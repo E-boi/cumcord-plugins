@@ -1,6 +1,6 @@
 {
   "name": "Channel Previews",
-  "description": "",
+  "description": "Allows you to view recent messages in channels without switching to it.",
   "author": "ugly-patootie#0611",
   "file": "index.jsx",
   "license": "MIT"
