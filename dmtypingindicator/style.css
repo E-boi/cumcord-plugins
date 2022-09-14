@@ -15,6 +15,10 @@
   color: var(--interactive-hover);
 }
 
+.dm-typing-indicator.false {
+  display: none;
+}
+
 .dm-typing-badge {
   border-radius: 8px;
   width: 20px;
