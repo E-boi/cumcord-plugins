@@ -1,14 +1,16 @@
 import { batchFind, findByProps } from '@cumcord/modules/webpack';
 import { after, injectCSS } from '@cumcord/patcher';
 import { persist } from '@cumcord/pluginData';
+import { findInReactTree } from '@cumcord/utils';
 import Popout, { undarkenChat } from './components/Popout';
 import Settings from './components/Settings';
 import css from './style.css';
 
-const [TextChannel, ChannelItem, PrivateChannel] = batchFind(f => {
+const [TextChannel, ChannelItem, PrivateChannel, ChannelList] = batchFind(f => {
   f.findByDisplayName('ConnectedTextChannel', false);
   f.findByDisplayName('ChannelItem', false);
   f.findByDisplayName('PrivateChannel');
+  f.findByProps('GuildChannelList');
 });
 const injections = [];
 
@@ -23,13 +25,13 @@ const moreCss = `
 export default {
   onLoad() {
     injections.push(
-      after('default', TextChannel, function ([{ channel }], res) {
+      after('default', TextChannel, function (_, res) {
         let a = after(
           'render',
           res.type.DecoratedComponent.prototype,
-          (_, res) => {
+          function (_, res) {
             if (![15, 14, 4, 13].includes(channel.type) && res.props?.children?.props?.children && !res.props?.children?.props?.res)
-              res.props.children = <Popout res={res} item={res.props.children.props.children} channelId={channel.id} />;
+              res.props.children = <Popout res={res} item={res.props.children.props.children} channelId={this.props.channel.id} />;
 
             a();
             return res;

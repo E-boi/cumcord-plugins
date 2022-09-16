@@ -57,7 +57,7 @@ export default class Messages extends React.PureComponent {
 
   componentDidMount() {
     if (this.state.messages?.length === 0)
-      fetchMessages({ channelId: this.props.channel.id, limit: 20 }).then(ok => {
+      fetchMessages({ channelId: this.props.channel.id, limit: 20 })?.then(ok => {
         if (!ok) return this.setState({ messages: null });
         const messages = getMessages(this.props.channel.id).toArray().reverse().slice(0, 20).reverse();
         if (messages.length === 0) return this.setState({ messages: null });
