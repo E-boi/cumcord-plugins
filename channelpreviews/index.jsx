@@ -30,7 +30,7 @@ export default {
           'render',
           res.type.DecoratedComponent.prototype,
           function (_, res) {
-            if (![15, 14, 4, 13].includes(channel.type) && res.props?.children?.props?.children && !res.props?.children?.props?.res)
+            if (![15, 14, 4, 13].includes(this.props.channel.type) && res.props?.children?.props?.children && !res.props?.children?.props?.res)
               res.props.children = <Popout res={res} item={res.props.children.props.children} channelId={this.props.channel.id} />;
 
             a();
